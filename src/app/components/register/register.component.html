@@ -1,0 +1,29 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="https://opentherapi.com/user-admin.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+        <form #registerForm="ngForm" (ngSubmit)="register">
+            <input type="email" #email="ngModel" id="email" class="fadeIn second" name="login" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="user.email" />
+            <span *ngIf="!email.valid && email.touched">
+               <br> El correo no es correcto!!
+            </span>
+            <input type="text" id="nombre" class="fadeIn second" name="login" placeholder="Nombre"[(ngModel)]="user.name" required />
+            <input type="text" id="apellidos" class="fadeIn second" name="login" placeholder="Apellidos" [(ngModel)]="user.lastname" required />
+            <input type="text" id="cif" class="fadeIn second" name="login" placeholder="CIF" [(ngModel)]="user.CIF" required />
+            <input type="text" id="calle" class="fadeIn second" name="login" placeholder="Calle" [(ngModel)]="user.calle" required />
+            <input type="text" id="cp" class="fadeIn second" name="login" placeholder="CP" [(ngModel)]="user.CP" required />
+            <input type="text" id="poblacion" class="fadeIn second" name="login" placeholder="Población" [(ngModel)]="user.poblacion" required />
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña" [(ngModel)]="user.password" required />
+            <input type="password" id="password2" class="fadeIn third" name="login" placeholder="Repite la contraseña" [(ngModel)]="password2" required />
+            <input type="submit" class="fadeIn fourth" value="Registrar" [disabled]="!registerForm.form.valid"  />
+
+            <input type="button" class="fadeIn fourth" value="Login" [routerLink]="['/login']" />
+        </form>
+    </div>
+</div>

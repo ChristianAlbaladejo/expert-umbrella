@@ -1,0 +1,26 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="https://opentherapi.com/user-admin.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+            <form #loginForm="ngForm" (ngSubmit)="login()" >
+            <input type="email" #email="ngModel" id="email" [(ngModel)]="user.email" class="fadeIn second" name="login" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+            <span *ngIf="!email.valid && email.touched">
+               <br> El email no es correcto
+            </span>
+            <input type="password" [(ngModel)]="user.password" id="email" class="fadeIn third" name="login" placeholder="Contraseña" required />
+            <input type="submit" class="fadeIn fourth" value="Log In" [routerLink]="['/product']"  [disabled]="!loginForm.form.valid" />
+            <input type="button" class="fadeIn fourth" value="Registrate" [routerLink]="['/register']" />
+        </form>
+
+        <!-- Remind Passowrd -->
+     <!--    <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div> -->
+    </div>
+</div>

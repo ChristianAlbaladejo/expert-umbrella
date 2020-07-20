@@ -1,0 +1,87 @@
+<div *ngIf="products.length == 0">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">No tienes productos</h5>
+      <p class="card-text">ve a la tienda y compra algo.
+      </p>
+      <a href="#" class="btn btn-primary" [routerLink]="['/product']" >Ir a la tienda</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="products.length != 0">
+<div class="container mb-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Product</th>
+              <th scope="col">Available</th>
+              <th scope="col" class="text-center">Quantity</th>
+              <th scope="col" class="text-right">Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of products">
+              <td><img src="https://dummyimage.com/50x50/55595c/fff" /></td>
+              <td>{{p.name}}</td>
+              <td>In stock</td>
+              <td><input class="form-control"  type="number"  min="1" max="99"  ng-pattern="/^[0-9]{1,7}$/" (change)="onChange($event, p)" [(ngModel)]="p.quantity" [(value)]="p.quatify" /></td>
+              <td class="text-right">{{p.costPrice}} €</td>
+              <td class="text-right">
+                <button class="btn btn-sm btn-danger" (click)="deleteProduct(p)">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Sub-Total</td>
+              <td class="text-right">{{this.total -5 | number : '1.2-2'}} €</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Shipping</td>
+              <td class="text-right">5 €</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>Total</strong></td>
+              <td class="text-right"><strong>{{this.total | number : '1.2-2'}} €</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col mb-2">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <button class="btn btn-block btn-light" [routerLink]="['/product']" >Continue Shopping</button>
+        </div>
+        <div class="col-sm-12 col-md-6 text-right">
+          <button class="btn btn-lg btn-block btn-success text-uppercase" (click)="testRequest()">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

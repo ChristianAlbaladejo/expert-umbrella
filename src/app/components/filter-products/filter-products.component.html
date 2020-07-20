@@ -1,0 +1,17 @@
+<div class=”row”>
+    <div class="column" *ngFor="let p of product">
+        <div class="card">
+            <img class="card-img-top" src="https://www.recetasderechupete.com/wp-content/uploads/2018/01/Pan-casero-f%C3%A1cil-525x360.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{p.name}}</h5>
+                <p class="card-text">{{p.costPrice}}
+                </p>
+                
+                <a (click)="addToCart(p)" class="btn btn-primary">Comprar</a>
+            </div>
+            <div class="number-input md-number-input">
+                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus" (click)="quitQuantity(p)" [disabled]="p.quantity <= 1"></button>
+                <input [(ngModel)]="p.quantity" class="quantity" min="1" name="quantity" value="1" type="number" disabled>
+                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" (click)="addQuantity(p)" class="plus" [disabled]="p.quantity > 98"></button>
+            </div>
+        </div>

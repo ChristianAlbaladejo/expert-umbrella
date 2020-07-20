@@ -1,0 +1,70 @@
+
+<!-- <div style="text-align:center">
+  <h1 (click)="selectLanguage($event)">
+      {{ 'HOME.TITLE' | translate }}
+  </h1>
+  <select
+      [ngModel]="selectedLanguage"
+      (ngModelChange)="selectLanguage($event)">
+      <option value="es">
+          {{ 'HOME.SPANISH' | translate }}
+      </option>
+      <option value="en">
+          {{ 'HOME.ENGLISH' | translate }}
+      </option>
+  </select>
+</div> -->
+
+ <!-- <div class="container">
+    <a class="navbar-brand">
+      {{'Sitetitle' | translate }}
+    </a>
+    <span class="form-inline">
+      <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
+        <option *ngFor="let language of translate.getLangs()" [value]="language"
+          [selected]="language === translate.currentLang">
+          {{ language }}
+        </option>
+      </select>
+    </span>
+  </div> -->
+
+<div class="form-group has-search" >
+    <span class="fa fa-search form-control-feedback">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+            <path fill-rule="evenodd"
+                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+            </svg></span>
+    <input type="text" class="form-control" placeholder="Busca por categoría, producto o código..." />
+</div>
+<div *ngIf="families">
+<div *ngFor="let famili of families" class="card img-fluid img-thumbnail shadow-sm p-3 mb-5 bg-white rounded" [routerLink]="['/product/filtered']" [state]="{ id: famili.id}">
+    <div class="card-body h4">
+        {{famili.name | uppercase | translate }}
+    </div>
+</div>
+</div>
+
+<div class="container-f" *ngIf="ifLogin()" (click)="goLogin()">
+    <div class="row">
+        <div class="col-10">
+            <div class="login" (ngModelChange)="selectLanguage($event)">
+                {{'IDENTIFÍCATE' | translate}}
+            </div>
+
+            <div class="login-1">
+                {{'Y accede a tus condiciones personalizadas' | translate}}
+            </div>
+        </div>
+        <div class="col-2">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person user-login" fill="#ffffff"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            </svg>
+        </div>
+    </div>
+</div>

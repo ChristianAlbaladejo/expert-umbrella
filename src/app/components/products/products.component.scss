@@ -1,0 +1,72 @@
+.card {
+  margin: 1em;
+  margin-bottom: 30px !important;
+  height: 8em;
+  background-image: url("https://image.freepik.com/foto-gratis/surtido-pan-horneado_87742-8900.jpg");
+  background-repeat: no-repeat;
+}
+
+.card-body {
+  margin-left: -0.5em;
+  color: white;
+  text-shadow: 2px 2px rgb(190, 190, 190);
+}
+
+.main {
+  width: 50%;
+  margin: 50px auto;
+}
+
+.form-group {
+  margin: 0.5em;
+  border-radius: 50%;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+  background-color: rgb(240, 240, 240);
+  border: none;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+  background-color: rgb(240, 240, 240);
+  border-radius: 50%;
+}
+
+.container-f {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #cb9f3e;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.user-login {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+}
+.login {
+  margin-left: 0.9em;
+  font-size: 90%;
+}
+
+.login-1 {
+  margin-left: 1em;
+  font-size: 90%;
+}
