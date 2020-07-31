@@ -1,0 +1,1048 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Export>
+  <PriceLists>
+    <PriceList Id="1" Name="Barra" VatIncluded="true" />
+    <PriceList Id="2" Name="Terraza" VatIncluded="true" />
+    <PriceList Id="3" Name="Salón" VatIncluded="false" />
+  </PriceLists>
+  <Customers>
+    <Customer Id="1" FiscalName="CLIENTE GENÉRICO" BusinessName="" Cif="00000000" Street="" City="" Region="" ZipCode="" AccountCode="" ApplySurcharge="false" DiscountRate="0.00" CardNumber="" Telephone="" Email="" ContactPerson="" SendMailing="false" Notes="" ShowNotes="false">
+      <Offers />
+    </Customer>
+    <Customer Id="2" FiscalName="Sol y Sombra, S.L." BusinessName="Talleres Sol y Sombra" Cif="B0018912" Street="C/ García de Paredes, 10" City="Madrid" Region="Madrid" ZipCode="28010" AccountCode="431000001" ApplySurcharge="false" DiscountRate="0.005" CardNumber="" Telephone="91 501 221 944" Email="raul.romero@solysombra.es" ContactPerson="Raúl Romero" SendMailing="true" Notes="" ShowNotes="false">
+      <Offers />
+    </Customer>
+    <Customer Id="3" FiscalName="Lucas Grijander" BusinessName="" Cif="2098110T" Street="C/ Amor de Madre, 3" City="Leganés" Region="Madrid" ZipCode="28047" AccountCode="431000002" ApplySurcharge="false" DiscountRate="0.00" CardNumber="" Telephone="636 987 512" Email="lgrijander69@hormail.com" ContactPerson="" SendMailing="true" Notes="" ShowNotes="false">
+      <Offers />
+    </Customer>
+  </Customers>
+  <Families>
+    <Family Id="1" Name="Cervezas" ShowInPos="true" ButtonText="Cervezas" Color="#BACDE2" Order="0" />
+    <Family Id="2" Name="Whiskies" ShowInPos="true" ButtonText="Whiskies" Color="#BACDE2" Order="1" />
+    <Family Id="3" Name="Cafés" ShowInPos="true" ButtonText="Cafés" Color="#BACDE2" Order="2" />
+    <Family Id="4" Name="Refrescos" ShowInPos="true" ButtonText="Refrescos" Color="#BACDE2" Order="3" />
+    <Family Id="5" Name="Hamburguesas" ShowInPos="true" ButtonText="Hamburguesas" Color="#BACDE2" Order="4" />
+    <Family Id="6" Name="Bollería" ShowInPos="true" ButtonText="Bollería" Color="#BACDE2" Order="5" />
+    <Family Id="7" Name="Raciones" ShowInPos="true" ButtonText="Raciones" Color="#BACDE2" Order="6" />
+    <Family Id="8" Name="Bocadillos" ShowInPos="true" ButtonText="Bocadillos" Color="#BACDE2" Order="7" />
+    <Family Id="9" Name="Pizzas" ShowInPos="true" ButtonText="Pizzas" Color="#BACDE2" Order="8" />
+    <Family Id="10" Name="Varios" ShowInPos="true" ButtonText="Varios" Color="#BACDE2" Order="9" />
+    <Family Id="11" Name="Menús" ShowInPos="true" ButtonText="Menús" Color="#BACDE2" Order="10" />
+  </Families>
+  <Products>
+    <Product Id="1" Name="Jack Daniels" BaseSaleFormatId="1" ButtonText="Jack Daniels" Color="#BACDE2" PLU="" FamilyId="2" VatId="4" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00" MinAddins="0" MaxAddins="1">
+      <Barcodes>
+        <Barcode Value="803400001" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="6.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="9.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="8.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <Addins>
+        <Addin SaleFormatId="4" />
+        <Addin SaleFormatId="9" />
+      </Addins>
+      <AddinRoles>
+        <AddinRole Name="Añadidos" ButtonText="Añadidos" Color="#BACDE2" MinAddins="0" MaxAddins="1" UsePreparationType="FromMain">
+          <Addins>
+            <Addin SaleFormatId="4" />
+            <Addin SaleFormatId="9" />
+          </Addins>
+        </AddinRole>
+      </AddinRoles>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="2" Name="JB" BaseSaleFormatId="2" ButtonText="JB" Color="#BACDE2" PLU="" FamilyId="2" VatId="4" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00" MinAddins="0" MaxAddins="1">
+      <Barcodes>
+        <Barcode Value="803400002" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="5.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="7.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="6.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <Addins>
+        <Addin SaleFormatId="4" />
+        <Addin SaleFormatId="9" />
+      </Addins>
+      <AddinRoles>
+        <AddinRole Name="Añadidos" ButtonText="Añadidos" Color="#BACDE2" MinAddins="0" MaxAddins="1" UsePreparationType="FromMain">
+          <Addins>
+            <Addin SaleFormatId="4" />
+            <Addin SaleFormatId="9" />
+          </Addins>
+        </AddinRole>
+      </AddinRoles>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="3" Name="Talisker" BaseSaleFormatId="3" ButtonText="Talisker" Color="#BACDE2" PLU="" FamilyId="2" VatId="4" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400003" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="8.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="11.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="10.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="4" Name="Coca Cola" BaseSaleFormatId="4" ButtonText="Coca Cola" Color="#BACDE2" PLU="" FamilyId="4" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400004" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="2.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="5" Name="Fanta Limón" BaseSaleFormatId="5" ButtonText="Fanta Limón" Color="#BACDE2" PLU="" FamilyId="4" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400005" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="2.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="6" Name="Fanta Naranja" BaseSaleFormatId="6" ButtonText="Fanta Naranja" Color="#BACDE2" PLU="" FamilyId="4" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400006" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="2.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="7" Name="Coca Cola Light" BaseSaleFormatId="7" ButtonText="Coca Cola Light" Color="#BACDE2" PLU="" FamilyId="4" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400007" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="2.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="8" Name="Coca Cola Zero" BaseSaleFormatId="8" ButtonText="Coca Cola Zero" Color="#000000" PLU="" FamilyId="4" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400008" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="2.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="9" Name="Sprite" BaseSaleFormatId="9" ButtonText="Sprite" Color="#BACDE2" PLU="" FamilyId="4" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400009" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="2.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="10" Name="Aquarius" BaseSaleFormatId="10" ButtonText="Aquarius" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400010" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="8.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="11" Name="Trina" BaseSaleFormatId="11" ButtonText="Trina" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400011" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="2.20" AddinPrice="1.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="12" Name="Duff" BaseSaleFormatId="12" ButtonText="Duff" Color="#BACDE2" PLU="" FamilyId="1" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400012" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="3.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="13" Name="Mahou" BaseSaleFormatId="13" ButtonText="Mahou" Color="#BACDE2" PLU="" FamilyId="1" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400013" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="14" Name="Garrapata Roja" BaseSaleFormatId="14" ButtonText="Garrapata Roja" Color="#BACDE2" PLU="" FamilyId="1" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="1" PreparationOrderId="1" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400014" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.25" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="15" Name="Hamburguesa" BaseSaleFormatId="15" ButtonText="Hamburguesa" Color="#BACDE2" PLU="" FamilyId="5" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="true" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00" MinAddins="0" MaxAddins="2">
+      <Barcodes>
+        <Barcode Value="803400015" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="5.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <Addins>
+        <Addin SaleFormatId="17" />
+        <Addin SaleFormatId="18" />
+      </Addins>
+      <AddinRoles>
+        <AddinRole Name="Añadidos" ButtonText="Añadidos" Color="#BACDE2" MinAddins="0" MaxAddins="2" UsePreparationType="FromMain">
+          <Addins>
+            <Addin SaleFormatId="17" />
+            <Addin SaleFormatId="18" />
+          </Addins>
+        </AddinRole>
+      </AddinRoles>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="16" Name="Hamburguesa doble" BaseSaleFormatId="16" ButtonText="Hamburguesa doble" Color="#BACDE2" PLU="" FamilyId="5" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="true" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00" MinAddins="0" MaxAddins="2">
+      <Barcodes>
+        <Barcode Value="803400016" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="3.25" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="5.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <Addins>
+        <Addin SaleFormatId="17" />
+        <Addin SaleFormatId="18" />
+      </Addins>
+      <AddinRoles>
+        <AddinRole Name="Añadidos" ButtonText="Añadidos" Color="#BACDE2" MinAddins="0" MaxAddins="2" UsePreparationType="FromMain">
+          <Addins>
+            <Addin SaleFormatId="17" />
+            <Addin SaleFormatId="18" />
+          </Addins>
+        </AddinRole>
+      </AddinRoles>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="17" Name="Queso" BaseSaleFormatId="17" ButtonText="Queso" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400017" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="18" Name="Bacon" BaseSaleFormatId="18" ButtonText="Bacon" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400018" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="19" Name="Café Sólo" BaseSaleFormatId="19" ButtonText="Café Sólo" Color="#BACDE2" PLU="" FamilyId="3" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400019" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.20" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="20" Name="Café con Leche" BaseSaleFormatId="20" ButtonText="Café con Leche" Color="#BACDE2" PLU="" FamilyId="3" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400020" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.30" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.30" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.30" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="21" Name="Café Cortado" BaseSaleFormatId="21" ButtonText="Café Cortado" Color="#BACDE2" PLU="" FamilyId="3" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400021" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.25" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.25" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.25" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="22" Name="Café Descafeinado" BaseSaleFormatId="22" ButtonText="Café Descafeinado" Color="#BACDE2" PLU="" FamilyId="3" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400022" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.30" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.30" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.30" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="23" Name="Capuccino" BaseSaleFormatId="23" ButtonText="Capuccino" Color="#BACDE2" PLU="" FamilyId="3" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400023" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="24" Name="Donut" BaseSaleFormatId="24" ButtonText="Donut" Color="#BACDE2" PLU="" FamilyId="6" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400024" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="25" Name="Tostada" BaseSaleFormatId="25" ButtonText="Tostada" Color="#BACDE2" PLU="" FamilyId="6" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400025" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.35" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.35" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.35" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="26" Name="Croissant" BaseSaleFormatId="26" ButtonText="Croissant" Color="#BACDE2" PLU="" FamilyId="6" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400026" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="27" Name="Ensaimada" BaseSaleFormatId="27" ButtonText="Ensaimada" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400027" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.00" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="2.00" AddinPrice="2.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.75" AddinPrice="1.75" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="28" Name="Churro" BaseSaleFormatId="28" ButtonText="Churro" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400028" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="0.20" AddinPrice="0.20" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="0.60" AddinPrice="0.60" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="0.40" AddinPrice="0.40" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="29" Name="Varios Comida" BaseSaleFormatId="29" ButtonText="Varios Comida" Color="#BACDE2" PLU="" FamilyId="10" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400029" />
+      </Barcodes>
+      <Prices />
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="30" Name="Varios Bebida" BaseSaleFormatId="30" ButtonText="Varios Bebida" Color="#FF8040" PLU="" FamilyId="10" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400030" />
+      </Barcodes>
+      <Prices />
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="31" Name="Callos Madrileña" BaseSaleFormatId="31" ButtonText="Callos Madrileña" Color="#BACDE2" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400031" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="4.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="32" Name="Albóndigas" BaseSaleFormatId="32" ButtonText="Albóndigas" Color="#BACDE2" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400032" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="4.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="33" Name="Ensaladilla Rusa" BaseSaleFormatId="33" ButtonText="Ensaladilla Rusa" Color="#BACDE2" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400033" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="4.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="34" Name="Jamón Serrano" BaseSaleFormatId="34" ButtonText="Jamón Serrano" Color="#BACDE2" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400034" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.00" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="4.00" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.00" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="35" Name="Jamón Ibérico" BaseSaleFormatId="35" ButtonText="Jamón Ibérico" Color="#BACDE2" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400035" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="5.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="5.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="5.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="36" Name="R. Queso" BaseSaleFormatId="36" ButtonText="R. Queso" Color="#BACDE2" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400036" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="4.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="37" Name="Lomo Ibérico" BaseSaleFormatId="37" ButtonText="Lomo Ibérico" Color="#BACDE2" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400037" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="5.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.75" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="38" Name="Chorizo" BaseSaleFormatId="38" ButtonText="Chorizo" Color="#BACDE2" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400038" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="4.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="39" Name="Salchichón" BaseSaleFormatId="39" ButtonText="Salchichón" Color="#BACDE2" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400039" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="40" Name="Media Jamón Serrano" BaseSaleFormatId="40" ButtonText="Media Jamón Serrano" Color="#FFFF80" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400040" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="2.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="2.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="41" Name="Media Jamón Ibérico" BaseSaleFormatId="41" ButtonText="Media Jamón Ibérico" Color="#FFFF80" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400041" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="2.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="2.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="42" Name="Media R. Queso" BaseSaleFormatId="42" ButtonText="Media R. Queso" Color="#FFFF80" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400042" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="2.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="2.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="43" Name="Media Lomo Ibérico" BaseSaleFormatId="43" ButtonText="Media Lomo Ibérico" Color="#FFFF80" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400043" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="2.75" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="44" Name="Media Chorizo" BaseSaleFormatId="44" ButtonText="Media Chorizo" Color="#FFFF80" PLU="" FamilyId="7" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400044" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="2.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="2.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="45" Name="Bocadillo" BaseSaleFormatId="45" ButtonText="Bocadillo" Color="#FF8040" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400045" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="46" Name="Pepito Ternera" BaseSaleFormatId="46" ButtonText="Pepito Ternera" Color="#FF8040" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400046" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="3.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="47" Name="Bocadillo Tortilla" BaseSaleFormatId="47" ButtonText="Bocadillo Tortilla" Color="#FF8040" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400047" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="48" Name="Bocadillo Lomo Ibérico" BaseSaleFormatId="48" ButtonText="Bocadillo Lomo Ibérico" Color="#FF8040" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400048" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="4.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="49" Name="Bocadillo Calamares" BaseSaleFormatId="49" ButtonText="Bocadillo Calamares" Color="#FF8040" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400049" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="50" Name="Montado Tortilla" BaseSaleFormatId="50" ButtonText="Montado Tortilla" Color="#FFFF80" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400050" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="51" Name="Bocadillo Jamón Ibérico" BaseSaleFormatId="51" ButtonText="Bocadillo Jamón Ibérico" Color="#FF8040" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400051" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="4.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="4.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="52" Name="Montado" BaseSaleFormatId="52" ButtonText="Montado" Color="#FFFF80" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400052" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="53" Name="Montado Jamón Ibérico" BaseSaleFormatId="53" ButtonText="Montado Jamón Ibérico" Color="#FFFF80" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400053" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="3.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="2.75" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="54" Name="Montado Lomo Ibérico" BaseSaleFormatId="54" ButtonText="Montado Lomo Ibérico" Color="#FFFF80" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400054" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="2.00" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="2.20" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="2.00" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="55" Name="Sandwich Mixto" BaseSaleFormatId="55" ButtonText="Sandwich Mixto" Color="#80FF00" PLU="" FamilyId="8" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400055" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="1.70" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="1.50" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="56" Name="Pizza Barbacoa" BaseSaleFormatId="56" ButtonText="Barbacoa" Color="#BACDE2" PLU="" FamilyId="9" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400056" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="5.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="5.75" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="57" Name="Pizza Carbonara" BaseSaleFormatId="57" ButtonText="Carbonara" Color="#BACDE2" PLU="" FamilyId="9" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400057" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="5.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="5.75" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="58" Name="Pizza Tropical" BaseSaleFormatId="58" ButtonText="Tropical" Color="#BACDE2" PLU="" FamilyId="9" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400058" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="5.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="5.75" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="59" Name="Pizza al Gusto" BaseSaleFormatId="59" ButtonText="Al Gusto" Color="#BACDE2" PLU="" FamilyId="9" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400059" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="4.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="5.75" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="5.75" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="60" Name="Aceitunas" BaseSaleFormatId="60" ButtonText="Aceitunas" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400060" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="61" Name="Anchoas" BaseSaleFormatId="61" ButtonText="Anchoas" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400061" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="62" Name="Cebolla" BaseSaleFormatId="62" ButtonText="Cebolla" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400062" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="63" Name="Champiñones" BaseSaleFormatId="63" ButtonText="Champiñones" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400063" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="64" Name="Mozarella" BaseSaleFormatId="64" ButtonText="Mozarella" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400064" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="65" Name="Peperoni" BaseSaleFormatId="65" ButtonText="Peperoni" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400065" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="66" Name="Pollo" BaseSaleFormatId="66" ButtonText="Pollo" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400066" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="67" Name="Piña" BaseSaleFormatId="67" ButtonText="Piña" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400067" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="68" Name="Pimiento" BaseSaleFormatId="68" ButtonText="Pimiento" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400068" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="69" Name="Ternera" BaseSaleFormatId="69" ButtonText="Ternera" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400069" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="70" Name="Sin Salsa" BaseSaleFormatId="70" ButtonText="Sin Salsa" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400070" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="71" Name="Salsa Tomate" BaseSaleFormatId="71" ButtonText="Tomate" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400071" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="72" Name="Salsa Carbonara" BaseSaleFormatId="72" ButtonText="Carbonara" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400072" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="73" Name="Salsa Barbacoa" BaseSaleFormatId="73" ButtonText="Barbacoa" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400073" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="74" Name="Masa Clásica" BaseSaleFormatId="74" ButtonText="Clásica" Color="#FF8040" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400074" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.50" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.50" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.50" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="75" Name="Masa Fina" BaseSaleFormatId="75" ButtonText="Fina" Color="#FF8040" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400075" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="0.25" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="0.25" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="0.25" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="76" Name="Masa Borde Relleno" BaseSaleFormatId="76" ButtonText="Rolling" Color="#FF8040" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="false" SaleableAsAddin="true" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="" PreparationOrderId="" CostPrice="0.00">
+      <Barcodes>
+        <Barcode Value="803400076" />
+      </Barcodes>
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="1.00" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="1.00" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="79" Name="Ensalada Mixta" BaseSaleFormatId="79" ButtonText="Ensalada Mixta" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="80" Name="Gazpacho" BaseSaleFormatId="80" ButtonText="Gazpacho" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="81" Name="Tallarines Carbonara" BaseSaleFormatId="81" ButtonText="Tallarines Carbonara" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="82" Name="Sopa Castellana" BaseSaleFormatId="82" ButtonText="Sopa Castellana" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="2" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="83" Name="Merluza a la Romana" BaseSaleFormatId="83" ButtonText="Merluza a la Romana" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="84" Name="Pollo a la Plancha" BaseSaleFormatId="84" ButtonText="Pollo a la Plancha" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="85" Name="San Jacobo" BaseSaleFormatId="85" ButtonText="San Jacobo" Color="#FFA047" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="86" Name="Cinta de Lomo" BaseSaleFormatId="86" ButtonText="Cinta de Lomo" Color="#FFA047" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="87" Name="Solomillo de Ternera" BaseSaleFormatId="87" ButtonText="Solomillo de Ternera" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="true" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="88" Name="Bacalao al Horno" BaseSaleFormatId="88" ButtonText="Bacalao al Horno" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="3" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="89" Name="Natillas" BaseSaleFormatId="89" ButtonText="Natillas" Color="#FFA047" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="90" Name="Flan" BaseSaleFormatId="90" ButtonText="Flan" Color="#FFA047" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="91" Name="Manzana" BaseSaleFormatId="91" ButtonText="Manzana" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+    <Product Id="92" Name="Platano" BaseSaleFormatId="92" ButtonText="Platano" Color="#BACDE2" PLU="" FamilyId="" VatId="3" UseAsDirectSale="false" SaleableAsMain="true" SaleableAsAddin="false" IsSoldByWeight="false" AskForPreparationNotes="false" AskForAddins="true" PrintWhenPriceIsZero="true" PreparationTypeId="2" PreparationOrderId="4" CostPrice="0.00">
+      <Barcodes />
+      <Prices>
+        <Price PriceListId="1" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="2" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+        <Price PriceListId="3" MainPrice="" AddinPrice="" MenuItemPrice="0.00" />
+      </Prices>
+      <AdditionalSaleFormats />
+    </Product>
+  </Products>
+  <Stocks>
+    <Stock WarehouseId="1" ProductId="1" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="2" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="3" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="4" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="5" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="6" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="7" Quantity="-1.00" />
+    <Stock WarehouseId="1" ProductId="8" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="9" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="12" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="13" Quantity="0.00" />
+    <Stock WarehouseId="1" ProductId="14" Quantity="0.00" />
+  </Stocks>
+</Export>
