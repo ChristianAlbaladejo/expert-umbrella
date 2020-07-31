@@ -27,7 +27,7 @@
     "bootstrap": "^4.5.0",
     "exec-php": "0.0.5",
     "file-system": "^2.2.2",
-    "jquery": "^1.12.4",
+    "jquery": "^3.5.0",
     "popper.js": "^1.16.1",
     "rxjs": "^6.5.5",
     "rxjs-compat": "^6.6.0",
