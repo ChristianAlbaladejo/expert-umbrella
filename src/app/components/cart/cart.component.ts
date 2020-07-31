@@ -174,7 +174,7 @@ export class CartComponent implements OnInit, OnDestroy {
       '</Export>'
     console.log(body);
     this.http
-      .post('http://localhost:8984/api/import/',
+      .post('http://192.168.200.227:8984/api/import/',
         body, { headers: headers })
       .subscribe(data => {
         let orderlines = JSON.stringify(this.products)
@@ -219,7 +219,7 @@ export class CartComponent implements OnInit, OnDestroy {
           "Data": '\n\nSE HA GENERADO UN NUEVO PEDIDO AW-' + (parseInt(this.lastOrderId) + 1) + '\n FECHA DE PEDIDO:' + datetime + ' \nCLIENTE: ' + this.user[0].name.toUpperCase() + ' ' + this.user[0].lastname.toUpperCase() + '\n CALLE: ' + this.user[0].calle.toUpperCase() + '\n CIUDAD: ' + 'Murcia' + '\n POBLACION: ' + this.user[0].poblacion.toUpperCase() + '\n CP : ' + this.user[0].CP + '\n CONTACTO : ' + this.user[0].telefono + ' ' + this.user[0].email + '\n TOTAL: ' + Math.round((this.total + Number.EPSILON) * 100) / 100 + 'euros\n RECOGIDA/ENTREGA: ' + this.fechaRecogida.replace(/T/g, ' ') + '\n Forma de Pago: ' + this.chargesType.toUpperCase() + '\n\n\n\n\n\n\n\n\n\n\n'
         };
         this.http
-          .post('http://localhost:8984/api/print/',
+          .post('http://192.168.200.227:8984/api/print/',
             text, { headers: headers })
           .subscribe(data => {
             localStorage.removeItem('cart');
