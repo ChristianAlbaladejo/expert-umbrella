@@ -253,7 +253,6 @@ export class CartComponent implements OnInit, OnDestroy {
           .post('https://panesandco.herokuapp.com/order',
             body, { headers: headers })
           .subscribe(data => {
-            this._router.navigate(['/products']);
           }, error => {
           });
         $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
