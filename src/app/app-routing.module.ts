@@ -1,19 +1,23 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProductsComponent} from './components/products/products.component'
+import { ProductsComponent} from './components/products/products.component';
 import { LoginComponent } from './components/login/login.component';
 import { CartComponent } from './components/cart/cart.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FilterProductsComponent } from './components/filter-products/filter-products.component';
+import { SimpleProductComponent } from './components/simple-product/simple-product.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 const approutes: Routes = [
-  { path: '', redirectTo: '/product', pathMatch: 'full' },
-  { path: 'product', component: ProductsComponent },
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: 'products', component: ProductsComponent },
   { path: 'product/filtered', component: FilterProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'product', component: SimpleProductComponent },
+  { path: 'orders', component: OrdersComponent },
 ];
 
 @NgModule({

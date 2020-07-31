@@ -1,15 +1,19 @@
-.card {
-  margin: 1em;
-  margin-bottom: 30px !important;
-  height: 8em;
-  background-image: url("https://image.freepik.com/foto-gratis/surtido-pan-horneado_87742-8900.jpg");
+.card-1 {
+  /*   margin-bottom: 30px !important; */
+  height: 9em;
+  /*  background-image: url("../../../assets/1423.jpg");
   background-repeat: no-repeat;
+  background-size: 100% 100%;  */
 }
 
-.card-body {
-  margin-left: -0.5em;
+.card-body-1 {
+  margin-left: 0.5em;
   color: white;
   text-shadow: 2px 2px rgb(190, 190, 190);
+}
+.col {
+  margin: auto;
+  max-width: 30rem;
 }
 
 .main {
@@ -30,7 +34,6 @@
 
 .has-search .form-control-feedback {
   position: absolute;
-  z-index: 2;
   display: block;
   width: 2.375rem;
   height: 2.375rem;
@@ -59,7 +62,6 @@
   left: 25%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  
 }
 .login {
   margin-left: 0.9em;
@@ -69,4 +71,177 @@
 .login-1 {
   margin-left: 1em;
   font-size: 90%;
+}
+
+.columna {
+  max-width: -200px;
+  margin-bottom: -15px !important;
+}
+
+//products
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+}
+.buy {
+  position: absolute;
+  padding-left: 1em;
+  top: 0.5em;
+  left: 0.3em;
+}
+
+.column {
+  float: left;
+  width: 33%;
+  padding: 0 5px;
+}
+.card-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: -0.5em;
+}
+
+.row {
+  margin: 0 -5px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  margin-bottom: 1em;
+  height: 5em;
+}
+
+//input number
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.number-input {
+  margin: auto;
+}
+.number-input button {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+.number-input button:before,
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.number-input[_ngcontent-asr-c50] {
+  margin: -1em !important;
+}
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.number-input input[type="number"] {
+  text-align: center;
+}
+
+.md-number-input.number-input {
+  border: 2px solid #ddd;
+  width: 11.8rem;
+}
+.md-number-input.number-input button {
+  outline: none;
+  width: 3em;
+  height: 2.5em;
+  padding-top: 0.7rem;
+}
+.md-number-input.number-input button.minus {
+  padding-left: 5px;
+}
+.md-number-input.number-input button.plus {
+  padding-left: 0;
+}
+.md-number-input.number-input button:before,
+.md-number-input.number-input button:after {
+  width: 1rem;
+  background-color: #212121;
+}
+.md-number-input.number-input input[type="number"] {
+  max-width: 5rem;
+  padding: 0.5rem;
+  border: solid #ddd;
+  border-width: 0 2px;
+  font-size: 2rem;
+  height: 3rem;
+  font-weight: bold;
+  outline: none;
+}
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    .number-input.md-number-input.safari_only button:before,
+    .number-input.md-number-input.safari_only button:after {
+      margin-top: -0.6rem;
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+}
+
+.img-product {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.text {
+  margin-left: 0.5em;
+}
+
+.price {
+  font-size: 1em;
+}
+
+.boton {
+  margin-top: 0.3em;
+  width: 5em;
+  height: 2.5em;
+}
+
+.mb-5, .my-5 {
+    margin-bottom: 1rem!important;
 }

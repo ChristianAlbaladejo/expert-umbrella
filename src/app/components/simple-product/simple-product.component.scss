@@ -1,60 +1,45 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  padding-left: 10px;
-}
-.buy {
-  position: absolute;
-  padding-left: 1em;
-  top: 0.5em;
-  left: 0.3em;
-}
+     font-family: 'Open Sans' !important; 
+  }
 
-.column {
-  float: left;
-  width: 33%;
-  padding: 0 10px;
-}
-.card-title {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  margin-top: -0.5em;
+  .page-header, h2 {
+   font-family: 'Open Sans' !important; 
+  }
+
+
+   p, .caption h4, label, table, .panel, #contactpage > h2.success, #contactpage h2.error  {
+    font-size: 14px !important;
+  }
+
+  h2 {
+    font-size: 30px !important;
+  }
+
+  .form-control{
+      max-width: 75%;
+  }
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
 }
 
 .row {
-  margin: 0 -5px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -8px;
+  margin-left: -8px;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.adc{
+  margin-left: 0em;
+    margin-top: 2em;
 }
 
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
+  .description{
+       max-width: 70%;
   }
-}
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-  margin-bottom: 0.5em;
-  height: 5em;
-}
-
-//input number
-
-input[type="number"] {
+  input[type="number"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
@@ -64,7 +49,7 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 .number-input {
-  margin: auto;
+  margin-left: -2.2em;
 }
 .number-input button {
   -webkit-appearance: none;
@@ -97,11 +82,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .md-number-input.number-input {
   border: 2px solid #ddd;
-  width: 11.8rem;
+  width: 8.8rem;
 }
 .md-number-input.number-input button {
   outline: none;
-  width: 3em;
+  width: 2.5em;
   height: 2.5em;
   padding-top: 0.7rem;
 }
@@ -117,7 +102,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #212121;
 }
 .md-number-input.number-input input[type="number"] {
-  max-width: 5rem;
+  max-width: 3.5rem;
   padding: 0.5rem;
   border: solid #ddd;
   border-width: 0 2px;
@@ -133,58 +118,4 @@ input[type="number"]::-webkit-outer-spin-button {
       margin-top: -0.6rem;
     }
   }
-}
-
-footer {
-  position: fixed;
-  height: 100px;
-  bottom: 0;
-  width: 100%;
-}
-
-.img-product {
-  width: 50px !important;
-  height: 50px !important;
-}
-
-.text {
-  margin-left: 0.5em;
-}
-
-.price {
-  font-size: 1em;
-}
-
-.boton {
-  margin-top: 0.3em;
-  width: 5em;
-  height: 2.5em;
-}
-
-.mb-5, .my-5 {
-    margin-bottom: 1rem!important;
-}
-
-.form-group {
-  margin: 0.5em;
-  border-radius: 50%;
-}
-
-.has-search .form-control {
-  padding-left: 2.375rem;
-  background-color: rgb(240, 240, 240);
-  border: none;
-}
-
-.has-search .form-control-feedback {
-  position: absolute;
-  display: block;
-  width: 2.375rem;
-  height: 2.375rem;
-  line-height: 2.375rem;
-  text-align: center;
-  pointer-events: none;
-  color: #aaa;
-  background-color: rgb(240, 240, 240);
-  border-radius: 50%;
 }

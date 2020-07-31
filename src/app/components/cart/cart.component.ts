@@ -1,28 +1,62 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ProductsService } from '../../../app/services/products.service';
+import { UserService } from '../../../app/services/user.service';
+import { User } from '../../../app/models/user';
+import * as $ from "jquery";
+
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  providers: [ProductsService, UserService],
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
   public products = [];
+  public family = [];
+  public user;
+  public fechaRecogida;
+  displayForm = false;
   total = 0;
+  lastOrderId;
+  orderNotes = '';
+  currentDate;
+  creditCard = true;
+  chargesType = 'tarjeta';
+  shipping = 5
+
   constructor(
+    private _productsService: ProductsService,
     private _route: ActivatedRoute,
     private http: HttpClient,
+    private _userService: UserService,
     private _router: Router) { }
 
-  ngOnInit(): void {
-    let array = localStorage.getItem('cart');
-    this.products = JSON.parse(array);
-    for (let i = 0; i < this.products.length; i++) {
-      var perProduct = this.products[i]["costPrice"] * this.products[i]["quantity"];
-      this.total = perProduct + this.total;
-    }
-    this.total += 5;
+  async ngOnInit(): Promise<void> {
+    $(document).ready(function () {
+      $("#success-alert").hide();
+      $("#danger-alert").hide();
+    })
+    this.user = new User("", "", "", "", "", "", "", "", "");
+    await this.getFamilyName();
+    setTimeout(() => {
+      this.load();
+    },
+      500);
+    this.user = localStorage.getItem("identity")
+    this.user = JSON.parse(this.user);
+    var f = new Date();
+    this.currentDate = f.getFullYear() + "-" + ("0" + (f.getMonth() + 1)).slice(-2) + "-" + f.getDate() + "T00:00";
+    $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function (data) {
+
+    });
+    this.loadStripe();
   }
+
+  ngOnDestroy() {}
 
   onChange($event, p) {
     this.total = 0;
@@ -31,8 +65,35 @@ export class CartComponent implements OnInit {
       var perProduct = this.products[i]["costPrice"] * this.products[i]["quantity"];
       this.total = perProduct + this.total;
     }
-    this.total += 5;
+   if (this.total>30) {
+     this.shipping=0
+   }else{
+     this.shipping=5
+   }
     localStorage.setItem('cart', JSON.stringify(this.products));
+  }
+
+  load() {
+    let familyname = '';
+    let array = localStorage.getItem('cart');
+    this.products = JSON.parse(array);
+    for (let i = 0; i < this.products.length; i++) {
+      var perProduct = this.products[i]["costPrice"] * this.products[i]["quantity"];
+      this.products[i]['name'] = decodeURIComponent(escape(this.products[i]['name']));
+      this.family.forEach(element => {
+        if (element.id == this.products[i].familyId) {
+          familyname = element.name
+        }
+      });
+      this.products[i].familyName = familyname
+      this.total = perProduct + this.total;
+    }
+    if (this.total > 30) {
+      this.shipping = 0
+    } else {
+      this.shipping = 5
+    }
+    
   }
 
   deleteProduct(p) {
@@ -50,109 +111,60 @@ export class CartComponent implements OnInit {
     localStorage.setItem('cart', JSON.stringify(this.products));
   }
 
-  /* testRequest() {
-    let productString;
-    for (let i = 0; i < this.products.length; i++) {
-      productString += this.products[i]['name'] + ' x' + this.products[i]['quantity'] + '      ' + this.products[i]['costPrice'] + 'Õ!\n';
-    }
+  async buy() {
+    if (this.ifLogin()) {
+      this._router.navigate(['/login']);
+    } else if (this.fechaRecogida != undefined) {
 
-    console.log(productString);
-    let ticket = "Õ\n\nCo.\n30730\nC/Jose Serrano n27 ! \n !=================================================\nPEDIDO\nfecha del pedido va aqui 18:36:00\n=================================================\n" + productString + "\n=================================================\nTotal Impuestos incluidos " + this.total + "Õ!\n\n=================================================\n Aqui va el usuario registrado \n\n\n\n\n\n\n\n\n\n\n\n                                         V ! "
-    var body = { 'PrinterName': 'IMPRESORA', 'Format': 'plain', 'Data': ticket };
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'api-token': 'Blade001$'
-    });
-
-    this.http
-      .post('http://localhost:8984/api/print/',
-        body, { headers: headers })
-      .subscribe(data => {
-        alert('ok');
-        let orderlines = JSON.stringify(this.products)
-
-        let re = /\"/gi;
-        let result = orderlines.replace(re, "'");
-        var body = {
-          'orderLines': result,
-          'cashDiscount': 0,
-          'grossAmount': this.total,
-          'surchargeRate': 0,
-          'netAmount': 0,
-          'vatAmount': 0,
-          'surchargeAmount': 0,
-          'sended': true
-        };
-        let headers = new HttpHeaders({
-          'Content-Type': 'application/json',
-        });
-        console.log(body);
-
-        this.http
-          .post('http://localhost:3000/order',
-            body, { headers: headers })
-          .subscribe(data => {
-            alert('pedido registrado');
-          }, error => {
-            console.log(JSON.stringify(error.json()));
-          });
-      }, error => {
-        let orderlines = JSON.stringify(this.products)
-
-        let re = /\"/gi;
-        let result = orderlines.replace(re, "'");
-        var body = {
-          'orderLines': result,
-          'cashDiscount': 0,
-          'grossAmount': this.total,
-          'surchargeRate': 0,
-          'netAmount': 0,
-          'vatAmount': 0,
-          'surchargeAmount': 0,
-          'sended': false
-        };
-        let headers = new HttpHeaders({
-          'Content-Type': 'application/json',
-        });
-        console.log(body);
-
-        this.http
-          .post('http://localhost:3000/order',
-            body, { headers: headers })
-          .subscribe(data => {
-            alert('pedido registrado');
-          }, error => {
-            console.log(JSON.stringify(error.json()));
-          });
+      this.lastOrder();
+      setTimeout(() => {
+        this.testRequest();
+      },
+        2000);
+    } else {
+      $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
+        $("#danger-alert").slideUp(500);
       });
-  }*/
-  testRequest() {
+    }
+  }
+
+  async testRequest() {
     let headers = new HttpHeaders({
       'Content-Type': 'application/xml; charset=utf-8',
       'Api-Token': 'Blade001$',
       'Accept': 'application/xml'
     });
+    let lines = '';
+    for (let i = 0; i < this.products.length; i++) {
+      let date = Date.now();
+      var dt = new Date(date);
+      var lastIndex = i;
+      lines += "<Line Index=" + '"' + i + '"' + " CreationDate = " + '"' + dt.toISOString() + '"' + " Type = " + '"' + 'Standard' + '"' + " ParentIndex =" + '"' + '"' + " ProductId = " + '"' + this.products[i].id + '"' + " ProductName = " + '"' + this.products[i].name + '"' + " SaleFormatId = " + '"' + this.products[i].id + '"' + " SaleFormatName = " + '"' + this.products[i].name + '"' + " SaleFormatRatio = " + '"' + '1.00' + '"' + " MainBarcode = " + '"' + '"' + " ProductPrice = " + '"' + this.products[i].costPrice + '"' + " VatId = " + '"' + '3' + '"' + " VatRate = " + '"' + '0.10' + '"' + " SurchargeRate = " + '"' + '0.014' + '"' + " ProductCostPrice = " + '"' + '"' + " MenuGroup = " + '"' + '"' + " PreparationTypeId = " + '"' + '2' + '"' + " PreparationTypeName = " + '"' + 'Cocina' + '"' + " PLU =" + '"' + '"' + " FamilyId = " + '"' + this.products[i].familyId + '"' + " FamilyName = " + '"' + this.products[i].familyName + '"' + " PreparationOrderId = " + '"' + '4' + '"' + "  PreparationOrderName = " + '"' + 'Postres' + '"' + " Quantity = " + '"' + this.products[i].quantity + '"' + " UnitCostPrice =" + '"' + '"' + " TotalCostPrice = " + '"' + '"' + " UserId = " + '"' + '4' + '"' + " UnitPrice = " + '"' + this.products[i].costPrice + '"' + " DiscountRate = " + '"' + '0.00' + '"' + " CashDiscount = " + '"' + '0.00' + '"' + " OfferId =" + '"' + '"' + "  OfferCode = " + '"' + '"' + " TotalAmount = " + '"' + this.products[i].costPrice + '"' + "> <Notes><![CDATA[" + this.products[i].notes + "]]></Notes> </Line> "
+    }
+
+    if (this.total >= 30) {
+      lines += "<Line Index=" + '"' + lastIndex+1 + '"' + " CreationDate = " + '"' + dt.toISOString() + '"' + " Type = " + '"' + 'Standard' + '"' + " ParentIndex =" + '"' + '"' + " ProductId = " + '"' +1217 + '"' + " ProductName = " + '"' + 'portes' + '"' + " SaleFormatId = " + '"' +1217 + '"' + " SaleFormatName = " + '"' + 'portes' + '"' + " SaleFormatRatio = " + '"' + '1.00' + '"' + " MainBarcode = " + '"' + '"' + " ProductPrice = " + '"' + 5 + '"' + " VatId = " + '"' + '3' + '"' + " VatRate = " + '"' + '0.10' + '"' + " SurchargeRate = " + '"' + '0.014' + '"' + " ProductCostPrice = " + '"' + '"' + " MenuGroup = " + '"' + '"' + " PreparationTypeId = " + '"' + '2' + '"' + " PreparationTypeName = " + '"' + 'Cocina' + '"' + " PLU =" + '"' + '"' + " FamilyId = " + '"' + 11 + '"' + " FamilyName = " + '"' + 'HALLOWEN' + '"' + " PreparationOrderId = " + '"' + '4' + '"' + "  PreparationOrderName = " + '"' + 'Postres' + '"' + " Quantity = " + '"' +1 + '"' + " UnitCostPrice =" + '"' + '"' + " TotalCostPrice = " + '"' + '"' + " UserId = " + '"' + '4' + '"' + " UnitPrice = " + '"' +5 + '"' + " DiscountRate = " + '"' + '0.00' + '"' + " CashDiscount = " + '"' + '0.00' + '"' + " OfferId =" + '"' + '"' + "  OfferCode = " + '"' + '"' + " TotalAmount = " + '"' +5 + '"' + "> <Notes><![CDATA[]]></Notes> </Line> "
+    }
+    var deliveryDate = new Date(this.fechaRecogida);
     var body = '<?xml version="1.0" encoding = "utf-8" standalone = "yes" ?>' + '<Export>'
       + '<SalesOrders>'
-      + '<SalesOrder Serie="P" Number = "33" DeliveryDate = "" Status = "Pending" BusinessDay = "2020-07-07" Guests = "" Date = "2020-07-07T17:59:55" VatIncluded = "true" >'
-      + '<Customer Id="2" FiscalName = "JNC" Cif = "B30442016" Street = "C/ García, 10" City = "Madrid" Region = "Madrid" ZipCode = "28010" ApplySurcharge = "false" AccountCode = "" />' +
-      '<DeliveryAddress Street="C/ García, 10" City = "Madrid" Region = "Madrid" ZipCode = "28010" />' +
+      + '<SalesOrder Serie="AW" Number = ' + '"' + (parseInt(this.lastOrderId) + 1) + '"' + ' DeliveryDate = "' + deliveryDate.toISOString() + '" Status = "Pending" BusinessDay = "2020-07-07" Guests = "" Date = "2020-07-07T17:59:55" VatIncluded = "true" >'
+      + '<Customer Id="1" FiscalName = "' + this.user[0].name + ' ' + this.user[0].lastname + '" Cif = "' + this.user[0].CIF + '" Street = "" City = "" Region = "" ZipCode = "" ApplySurcharge = "false" AccountCode = "" />' +
+      '<DeliveryAddress Street="' + this.user[0].calle + '" City = "Murcia" Region = "' + this.user[0].poblacion + '" ZipCode = "' + this.user[0].CP + '" />' +
       '<Pos Id="1" Name = "TPV" />' +
       '<Workplace Id="1" Name = "TALLER DE SABORES Y PANES, SL" />' +
       '<User Id="4" Name = "TOÑI" />' +
       '<SaleCenter Id="1" Name = "Barra" Location = "B1" />' +
+      '<Notes><![CDATA[' + this.orderNotes + ']]></Notes>' +
       '<SuggestedTip Percentage="0.00" VatId = "0" VatRate = "0.00" SurchargeRate = "0.00" ApplyToVatIncluded = "true" IgnoreTicketDiscounts = "false" />' +
       '<ServiceCharge Rate="0.00" VatId = "0" VatRate = "0.00" SurchargeRate = "0.00" ApplyToVatIncluded = "true" IgnoreTicketDiscounts = "false" GrossAmount = "0.00" NetAmount = "0.00" VatAmount = "0.00" SurchargeAmount = "0.00" />' +
       '<Lines>' +
-      '<Line Index="0" CreationDate = "2020-07-07T17:59:15" Type = "Standard" ParentIndex = "" ProductId = "46" ProductName = "Pepito Ternera" SaleFormatId = "46" SaleFormatName = "Pepito Ternera" SaleFormatRatio = "1.00" MainBarcode = "" ProductPrice = "3.50" VatId = "3" VatRate = "0.10" SurchargeRate = "0.014" ProductCostPrice = "" MenuGroup = "" PreparationTypeId = "2" PreparationTypeName = "Cocina" PLU = "" FamilyId = "2" FamilyName = "SALADO" PreparationOrderId = "3" PreparationOrderName = "Segundos" Quantity = "1.00" UnitCostPrice = "" TotalCostPrice = "" UserId = "4" UnitPrice = "3.50" DiscountRate = "0.00" CashDiscount = "0.00" OfferId = "" OfferCode = "" TotalAmount = "3.50" />' +
-      '<Line Index="1" CreationDate = "2020-07-07T17:59:18" Type = "Standard" ParentIndex = "" ProductId = "52" ProductName = "Montado" SaleFormatId = "52" SaleFormatName = "Montado" SaleFormatRatio = "1.00" MainBarcode = "" ProductPrice = "1.50" VatId = "3" VatRate = "0.10" SurchargeRate = "0.014" ProductCostPrice = "" MenuGroup = "" PreparationTypeId = "2" PreparationTypeName = "Cocina" PLU = "" FamilyId = "3" FamilyName = "BOLLERIA" PreparationOrderId = "3" PreparationOrderName = "Segundos" Quantity = "1.00" UnitCostPrice = "" TotalCostPrice = "" UserId = "4" UnitPrice = "1.50" DiscountRate = "0.00" CashDiscount = "0.00" OfferId = "" OfferCode = "" TotalAmount = "1.50" />' +
-      '<Line Index="2" CreationDate = "2020-07-07T17:59:19" Type = "Standard" ParentIndex = "" ProductId = "51" ProductName = "Bocadillo Jamón Ibérico" SaleFormatId = "51" SaleFormatName = "Bocadillo Jamón Ibérico" SaleFormatRatio = "1.00" MainBarcode = "" ProductPrice = "4.50" VatId = "3" VatRate = "0.10" SurchargeRate = "0.014" ProductCostPrice = "" MenuGroup = "" PreparationTypeId = "2" PreparationTypeName = "Cocina" PLU = "" FamilyId = "3" FamilyName = "BOLLERIA" PreparationOrderId = "3" PreparationOrderName = "Segundos" Quantity = "1.00" UnitCostPrice = "" TotalCostPrice = "" UserId = "4" UnitPrice = "4.50" DiscountRate = "0.00" CashDiscount = "0.00" OfferId = "" OfferCode = "" TotalAmount = "4.50" />' +
-      '<Line Index="3" CreationDate = "2020-07-07T17:59:20" Type = "Standard" ParentIndex = "" ProductId = "8" ProductName = "Coca Cola Zero" SaleFormatId = "8" SaleFormatName = "Coca Cola Zero" SaleFormatRatio = "1.00" MainBarcode = "" ProductPrice = "2.50" VatId = "3" VatRate = "0.10" SurchargeRate = "0.014" ProductCostPrice = "" MenuGroup = "" PreparationTypeId = "1" PreparationTypeName = "Barra" PLU = "" FamilyId = "1" FamilyName = "PAN" PreparationOrderId = "1" PreparationOrderName = "Bebidas" Quantity = "1.00" UnitCostPrice = "" TotalCostPrice = "" UserId = "4" UnitPrice = "2.50" DiscountRate = "0.00" CashDiscount = "0.00" OfferId = "" OfferCode = "" TotalAmount = "2.50" />' +
+      lines +
       '</Lines>' +
-      '<Discounts DiscountRate = "0.005" CashDiscount = "0.00" />' +
+      '<Discounts DiscountRate = "0.000" CashDiscount = "0.00" />' +
       '<Payments />' +
       '<Offers />' +
-      '<Totals GrossAmount="11.94" NetAmount = "10.85" VatAmount = "1.09" SurchargeAmount = "0.00" >' +
+      '<Totals GrossAmount="' + this.total + '" NetAmount = "' + this.total + '" VatAmount = "1.09" SurchargeAmount = "0.00" >' +
       '<Taxes>' +
       '<Tax VatRate="0.10" SurchargeRate = "0.014" GrossAmount = "11.94" NetAmount = "10.85" VatAmount = "1.09" SurchargeAmount = "0.00" />' +
       '</Taxes>' +
@@ -161,18 +173,210 @@ export class CartComponent implements OnInit {
       '</SalesOrders>' +
       '</Export>'
     console.log(body);
-    /*   let parser = new DOMParser();
-      let doc = parser.parseFromString(body, "application/xml"); */
-    /* console.log(doc); */
-
     this.http
       .post('http://localhost:8984/api/import/',
         body, { headers: headers })
       .subscribe(data => {
-        alert('pedido registrado');
+        let orderlines = JSON.stringify(this.products)
+        let re = /\"/gi;
+        let result = orderlines.replace(re, "'");
+        var body = {
+          'orderLines': result,
+          'cashDiscount': 0,
+          'grossAmount': this.total,
+          'surchargeRate': 0,
+          'netAmount': 0,
+          'vatAmount': 0,
+          'surchargeAmount': 0,
+          'sended': true,
+          'userId': this.user[0].id
+        };
+        let headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem("token")
+        });
+        this.http
+          .post('https://panesandco.herokuapp.com/order',
+            body, { headers: headers })
+          .subscribe(data => {
+          }, error => {
+          });
+        //print ticket
+        headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'api-token': 'Blade001$'
+        });
+        var currentdate = new Date();
+        var datetime = currentdate.getDate() + "/"
+          + (currentdate.getMonth() + 1) + "/"
+          + currentdate.getFullYear() + " @ "
+          + currentdate.getHours() + ":"
+          + currentdate.getMinutes() + ":"
+          + currentdate.getSeconds();
+        var text = {
+          "PrinterName": "IMPRESORA",
+          "Format": "plain",
+          "Data": '\n\nSE HA GENERADO UN NUEVO PEDIDO AW-' + (parseInt(this.lastOrderId) + 1) + '\n FECHA DE PEDIDO:' + datetime + ' \nCLIENTE: ' + this.user[0].name.toUpperCase() + ' ' + this.user[0].lastname.toUpperCase() + '\n CALLE: ' + this.user[0].calle.toUpperCase() + '\n CIUDAD: ' + 'Murcia' + '\n POBLACION: ' + this.user[0].poblacion.toUpperCase() + '\n CP : ' + this.user[0].CP + '\n CONTACTO : ' + this.user[0].telefono + ' ' + this.user[0].email + '\n TOTAL: ' + this.total + 'euros\n RECOGIDA/ENTREGA: ' + this.fechaRecogida + '\n Forma de Pago: ' + this.chargesType.toUpperCase() + '\n\n\n\n\n\n\n\n\n\n\n'
+        };
+        this.http
+          .post('http://localhost:8984/api/print/',
+            text, { headers: headers })
+          .subscribe(data => {
+            localStorage.removeItem('cart');
+            localStorage.setItem('cart', JSON.stringify({}));
+            this._router.navigate(['/products']);
+          });
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+          $("#success-alert").slideUp(500);
+        });
       }, error => {
-        console.log(JSON.stringify(error));
+        console.log(error)
+        let orderlines = JSON.stringify(this.products)
+        let re = /\"/gi;
+        let result = orderlines.replace(re, "'");
+        var body = {
+          'orderLines': result,
+          'cashDiscount': 0,
+          'grossAmount': this.total,
+          'surchargeRate': 0,
+          'netAmount': 0,
+          'vatAmount': 0,
+          'surchargeAmount': 0,
+          'sended': false,
+          'userId': this.user[0].id
+        };
+        let headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem("token")
+        });
+        this.http
+          .post('https://panesandco.herokuapp.com/order',
+            body, { headers: headers })
+          .subscribe(data => {
+            this._router.navigate(['/products']);
+          }, error => {
+          });
+        $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
+          $("#danger-alert").slideUp(500);
+        });
       });
   }
+  async getFamilyName() {
+    this._productsService.getFamilies().subscribe(
+      (response) => {
+        this.family = response;
+      },
+      (error) => {
+      }
+    );
+  }
 
-} 
+  async lastOrder() {
+    await this._productsService.lastOrder().subscribe(
+      (response) => {
+        this.lastOrderId = response[0]['MAX(id)'];
+        if (this.lastOrderId == 'undefined' || this.lastOrderId == 'null') {
+          this.lastOrderId = 1
+        }
+      },
+      (error) => {
+      }
+    );
+  }
+
+  onItemChange() {
+    this.displayForm = true;
+  }
+
+  onChangeRadio(flag) {
+    if (flag == 'delivery') {
+      this.displayForm = true;
+      this.creditCard = true
+      this.user = localStorage.getItem("identity")
+      this.user = JSON.parse(this.user);
+    } else if (flag == 'tienda') {
+      this.creditCard = false
+      this.displayForm = false;
+      this.user[0].calle = "El pedido se tomara en mesa X"
+
+    } else if (flag == 'rtienda') {
+      this.creditCard = true
+      this.displayForm = false;
+      this.user[0].calle = "El pedido se recogera en tienda"
+    }
+  }
+
+  onOtherChange() {
+    this.displayForm = false;
+  }
+
+  ifLogin() {
+    let identity = JSON.parse(localStorage.getItem('identity'));
+    if (identity == null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  loadStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      var s = window.document.createElement("script");
+      s.id = "stripe-script";
+      s.type = "text/javascript";
+      s.src = "https://checkout.stripe.com/checkout.js";
+      window.document.body.appendChild(s);
+    }
+  }
+
+  pay(amount) {
+
+    if (this.ifLogin()) {
+      this._router.navigate(['/login']);
+    } else {
+      if (this.chargesType == 'tarjeta') {
+        var handler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51H9oTAATbeiMfoWZHrm3q0QCUtANPgu7FJ2x1CLcb5zCALiQ3yGdCq23LjRC4D6KGtzyDeeIUKu8hruQneZBBfHs00fbbXUCym',
+          locale: 'auto',
+          token: (token: any) => {
+            // You can access the token ID with `token.id`.
+            // Get the token ID to your server-side code for use.
+            var body = {
+              'stripeToken': token.id,
+              'amount': amount * 100
+            };
+            let headers = new HttpHeaders({
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            });
+            this.http.post('https://panesandco.herokuapp.com/charge',
+              body, { headers: headers })
+              .subscribe(data => {
+                this.buy()
+              }, error => {
+                console.log(error)
+              });
+          }
+        });
+
+        handler.open({
+          name: 'Panes&Co Checkout',
+          description: '',
+          amount: amount * 100
+        });
+      } else {
+        this.buy()
+      }
+    }
+  }
+
+  formaDePago(method) {
+    if (method == 'tarjeta') {
+      this.chargesType = 'tarjeta'
+    } else if (method == 'efectivo') {
+      this.chargesType = 'efectivo'
+    } else {
+      this.chargesType = 'El cliente quiere solicitar un credito'
+    }
+  }
+}

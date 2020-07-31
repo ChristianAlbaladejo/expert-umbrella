@@ -24,6 +24,8 @@ export class Product{
         public Prices: string,
         public Addins: string,
         public AddinRoles: string,
-        public IsMenu: string
+        public IsMenu: string,
+        public menu: string,
+        public notes: string
     ){}
 }

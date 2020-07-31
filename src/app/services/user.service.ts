@@ -9,7 +9,8 @@ export class UserService {
     public stats;
 
     constructor(public _http: HttpClient) {
-        this.url = "http://localhost:3000/"
+         this.url = "https://panesandco.herokuapp.com"   
+         /* this.url = "http://localhost:3000";   */
     }
 
     getIdentity() {
@@ -34,15 +35,11 @@ export class UserService {
     }
 
     login(user: User): Observable<any> {
-        var body = {
-            'email': user.email,
-            'password': user.password,
-            'gettoken': 'true'
-        };
+        JSON.stringify(user);
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
         });
-        return this._http.post(this.url + 'login', body, { headers: headers });
+        return this._http.post(this.url + '/login', user, { headers: headers });
     }
 
     register(user: User): Observable<any> {
@@ -50,7 +47,7 @@ export class UserService {
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
         });
-        return this._http.post(this.url + 'register', user, { headers: headers });
+        return this._http.post(this.url + '/register', user, { headers: headers });
     }
 }
 

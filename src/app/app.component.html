@@ -1,23 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="openbtn" (click)="openNav()">☰ </button>
   <a class="navbar-brand" href="#">Panes & Co</a>
-  <select id="lang" [(formControl)]="lang" (change)="send()">
+  <!--  <select id="lang" [(formControl)]="lang" (change)="send()">
     <option value="en" selected>English</option>
     <option value="es">Spanish</option>
     <option value="de">German </option>
     <option value="ar">Arabic</option>
-  </select>
+  </select> 
+ -->
 
-  <button id="translatebtn" (click)="send()">Translate</button>
+  <!-- <button id="translatebtn" (click)="send()">Translate</button> -->
 <div class="nav navbar-nav ml-auto">
-  <div (click)="goLogin()">
+  <div (click)="goLogin()" matBadge="8" >
     <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart icon" fill="#5dbcd2"
       xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd"
         d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
     </svg>
+    <span *ngIf="number!=0" class='badge badge-warning' id='lblCartCount'> {{number}} </span>
   </div>
 
-  <div  (click)="recharge()">
+
+  <!-- <div  (click)="recharge()">
     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="5dbcd2"
       xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd"
@@ -25,8 +29,45 @@
       <path fill-rule="evenodd"
         d="M8 3a4.995 4.995 0 0 0-4.192 2.273.5.5 0 0 1-.837-.546A6 6 0 0 1 14 8a.5.5 0 0 1-1.001 0 5 5 0 0 0-5-5zM2.5 7.5A.5.5 0 0 1 3 8a5 5 0 0 0 9.192 2.727.5.5 0 1 1 .837.546A6 6 0 0 1 2 8a.5.5 0 0 1 .501-.5z" />
     </svg>
+  </div> -->
+  
   </div>
+</nav> 
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a *ngIf="!ifLogin()" [routerLink]="['/orders']">Mis pedidos</a>
+  <!-- <a href="#">Clients</a> -->
+  <a  *ngIf="ifLogin()" [routerLink]="['/login']">Log-in</a>
+  <a href="" *ngIf="!ifLogin()" (click)="logout()">Log-out</a>
+</div>
+<div id="google_translate_element"></div>
+
+<footer (click)="goLogin()">
+  <div  class="container-f" *ngIf="ifLogin()" (click)="goLogin()">
+    <div class="row">
+      <div class="col-10">
+        <div class="login"  [routerLink]="['/login']"  (ngModelChange)="selectLanguage($event)">
+          {{'IDENTIFÍCATE' | translate}}
+        </div>
+  
+        <div class="login-1">
+          {{'Y accede a tus condiciones personalizadas' | translate}}
+        </div>
+      </div>
+      <div class="col-2">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person user-login" fill="#ffffff"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+        </svg>
+      </div>
+    </div>
   </div>
-</nav>
+</footer>
+<script type="text/javascript"
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <router-outlet></router-outlet>

@@ -5,32 +5,40 @@ import { Solution, GoogleObj } from './models/solution';
 import { GoogletranslateService } from './services/googletranslate.service';
 import { FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BadgeService } from './services/badge.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [ BadgeService],
 })
 export class AppComponent {
   lang = new FormControl('en');
-
   data: Solution = {
     title: '',
     description: '',
     detail: '',
   };
-
+  number = 0;
+  subscription: Subscription;
   private translateBtn: any;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
+    private _badge: BadgeService,
     private solution: SolutionService,
     private google: GoogletranslateService,
     public _http: HttpClient
   ) { }
 
   ngOnInit() {
+    this.number = setInterval(() => {
+      let array= JSON.parse(localStorage.getItem('cart'));
+     this.number = array.length
+    }, 1000);
     this.solution.getSolution().subscribe((res) => (this.data = res));
     this.translateBtn = document.getElementById('translatebtn');
     if (localStorage.getItem('cart')) {
@@ -39,23 +47,12 @@ export class AppComponent {
       localStorage.setItem('cart', JSON.stringify({}));
     }
   }
-
-  ifLogin() {
-    /* this._userService.ifGetIdentity(); */
-    let identity = JSON.parse(localStorage.getItem('identity'));
-    if (identity == null) {
-      return true;
-    } else {
-      return false;
-    }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   goLogin() {
-    if (this.ifLogin()) {
-      this._router.navigate(['/login']);
-    } else {
       this._router.navigate(['/cart']);
-    }
   }
 
   send() {
@@ -74,7 +71,7 @@ export class AppComponent {
           description: res.data.translations[1].translatedText,
           detail: res.data.translations[2].translatedText,
         };
-        console.log(this.data);
+        
       },
       (err) => {
         console.log(err);
@@ -97,5 +94,30 @@ export class AppComponent {
        .subscribe((data) => {
          alert(data);
        }); */
+  }
+
+
+  openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    
+  }
+
+  closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    
+  }
+
+  logout() {
+    localStorage.clear()
+  }
+
+  ifLogin() {
+    /* this._userService.ifGetIdentity(); */
+    let identity = JSON.parse(localStorage.getItem('identity'));
+    if (identity == null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

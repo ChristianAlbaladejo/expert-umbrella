@@ -62,6 +62,13 @@ footer a {
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     text-align: center;
-    
 }
 
+
+
+
+input{
+  &::-webkit-inner-spin-button{
+    opacity:1; // magic!
+  } 
+}

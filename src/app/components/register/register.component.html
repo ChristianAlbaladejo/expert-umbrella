@@ -8,7 +8,7 @@
         </div>
 
         <!-- Login Form -->
-        <form #registerForm="ngForm" (ngSubmit)="register">
+        <form #registerForm="ngForm" (ngSubmit)="register()">
             <input type="email" #email="ngModel" id="email" class="fadeIn second" name="login" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="user.email" />
             <span *ngIf="!email.valid && email.touched">
                <br> El correo no es correcto!!
@@ -17,6 +17,7 @@
             <input type="text" id="apellidos" class="fadeIn second" name="login" placeholder="Apellidos" [(ngModel)]="user.lastname" required />
             <input type="text" id="cif" class="fadeIn second" name="login" placeholder="CIF" [(ngModel)]="user.CIF" required />
             <input type="text" id="calle" class="fadeIn second" name="login" placeholder="Calle" [(ngModel)]="user.calle" required />
+            <input type="text" id="teléfono" class="fadeIn second" name="login" placeholder="Telefono" [(ngModel)]="user.telefono" required />
             <input type="text" id="cp" class="fadeIn second" name="login" placeholder="CP" [(ngModel)]="user.CP" required />
             <input type="text" id="poblacion" class="fadeIn second" name="login" placeholder="Población" [(ngModel)]="user.poblacion" required />
             <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña" [(ngModel)]="user.password" required />
@@ -26,4 +27,13 @@
             <input type="button" class="fadeIn fourth" value="Login" [routerLink]="['/login']" />
         </form>
     </div>
+</div>
+
+<div class="alert alert-success" id="success-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Bien! </strong> Te has registrado correctamente.
+</div>
+<div class="alert alert-danger" id="danger-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Ohh! </strong> Parece que hay un problema.
 </div>

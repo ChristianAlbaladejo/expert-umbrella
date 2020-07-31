@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductsService } from '../../../app/services/products.service';
 import { UserService } from '../../../app/services/user.service';
 import { Product } from '../../../app/models/product';
@@ -6,35 +6,26 @@ import { User } from '../../../app/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import * as $ from "jquery";
-import { TranslateService } from '@ngx-translate/core';
-
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
-  providers: [ProductsService, UserService],
+  selector: 'app-simple-product',
+  templateUrl: './simple-product.component.html',
+  styleUrls: ['./simple-product.component.scss'],
+  providers: [ProductsService, UserService]
 })
-export class ProductsComponent implements OnInit {
+export class SimpleProductComponent implements OnInit, OnDestroy {
   test;
   public product: Product;
   public families;
   public products: Product[];
   public cart = [];
-  public count: number = 0;
-  selectedLanguage = 'es';
-  search = '';
 
   constructor(
     private _productsService: ProductsService,
     private _userService: UserService,
     private _route: ActivatedRoute,
     private _router: Router,
-    public translate: TranslateService
   ) {
-/*     this.product = new Product('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''); */
-
-    translate.addLangs(['en', 'es']);
-    translate.setDefaultLang('es');
+    this.test = this._router.getCurrentNavigation().extras.state;
   }
 
   ngOnInit(): void {
@@ -53,62 +44,34 @@ export class ProductsComponent implements OnInit {
       (error) => {
       }
     );
+    this.load();
+
   }
 
-  ifLogin() {
-    /* this._userService.ifGetIdentity(); */
-    let identity = JSON.parse(localStorage.getItem('identity'));
-    if (identity == null) {
-      return true;
-    } else {
-      return false;
+  ngOnDestroy() {
+    if (this.product) {
+
+      this._router.navigateByUrl('/product/filtered2', { state: { id: this.product['familyId'] } });
     }
   }
 
-  goLogin() {
-    if (this.ifLogin()) {
-      this._router.navigate(['/login']);
+  load() {
+    if (this.test == null || this.test == undefined) {
+      this._router.navigate(['/products']);
     } else {
-      this._router.navigate(['/cart']);
-    }
-  }
-
-  selectLanguage(lang: string) {
-    this.translate.use(lang);
-  }
-
-  switchLang(lang: string) {
-    this.translate.use(lang);
-  }
-
-  filter() {
-    this._productsService.filter(this.search).subscribe(
-      (response) => {
-        this.products = response;
-        this.products.forEach(element => {
-          element['name'] = decodeURIComponent(escape(element['name']));
-        });
-      },
-      (error) => {
+      if (this.test == null || this.test == undefined) {
+        this._router.navigate(['/products']);
+      } else {
+        this._productsService.getProductById(this.test.id).subscribe(
+          (response) => {
+            this.product = response[0];
+            this.product['notes'] = '';
+          },
+          (error) => {
+          }
+        );
       }
-    );
-  }
-
-  //products
-  addQuantity(p) {
-
-    p.quantity += 1;
-
-  }
-
-  quitQuantity(p) {
-    p.quantity -= 1;
-  }
-
-
-  increament() {
-    this.count += 1;
-    return this.count;
+    }
   }
 
   addToCart(p) {
@@ -130,6 +93,15 @@ export class ProductsComponent implements OnInit {
     $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
       $("#success-alert").slideUp(500);
     });
+    window.history.back();
+  }
+
+  addQuantity(p) {
+    p.quantity += 1;
+  }
+
+  quitQuantity(p) {
+    p.quantity -= 1;
   }
 
 }

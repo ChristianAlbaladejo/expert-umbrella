@@ -3,17 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "lite": "lite-server",
-    "postinstall": "ng build --output-path angularapp  --aot --prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.0.2",
+    "@angular/cdk": "^10.1.1",
     "@angular/common": "~10.0.2",
     "@angular/compiler": "~10.0.2",
     "@angular/core": "~10.0.2",
@@ -24,21 +23,27 @@
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "@stripe/stripe-js": "^1.8.0",
+    "@types/jquery": "^3.5.1",
     "bootstrap": "^4.5.0",
     "exec-php": "0.0.5",
     "file-system": "^2.2.2",
-    "jquery": "^1.12.4",
+    "jquery": "^3.5.1",
+    "ngx-stripe": "^10.1.1",
+    "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
     "rxjs": "^6.5.5",
     "rxjs-compat": "^6.6.0",
+    "save": "^2.4.0",
+    "stripe": "^8.79.0",
     "tslib": "^2.0.0",
     "xml2js": "^0.4.23",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.1",
-    "@angular/cli": "^10.0.3",
-    "@angular/compiler-cli": "^10.0.4",
+    "@angular/cli": "~10.0.1",
+    "@angular/compiler-cli": "~10.0.2",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.12.48",
@@ -54,9 +59,5 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
-  },
-  "engines": {
-    "node": "10.14.2",
-    "npm": "6.4.1"
   }
 }

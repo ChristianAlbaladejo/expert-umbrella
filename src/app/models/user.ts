@@ -8,5 +8,6 @@ export class User {
         public CP: string,
         public poblacion: string,
         public email: string,
+        public telefono: string
     ) { }
 }

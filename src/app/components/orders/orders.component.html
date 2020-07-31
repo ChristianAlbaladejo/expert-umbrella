@@ -1,0 +1,56 @@
+<!-- <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let p of orders ; let i = index">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Pedido: </h5>
+            <small>3 days ago</small> 
+        </div>
+        <p class="mb-1" *ngFor="let l of p.orderLines"> {{l.name}}</p>
+        <div class="row">
+            <h3 class="col">{{p.grossAmount}} €</h3>
+            <button (click)="addToCart(p.orderLines)" type="button" class="btn btn-primary COL">Pedir</button>
+        </div>
+    </li>
+</ul> -->
+
+<!-- <div class="accordion" id="accordionExample" >
+    <div class="card" *ngFor="let p of orders ; let i = index">
+        <div class="card-header" id="heading{{i}}">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{i}}"
+                    [aria-expanded]="i == 0? true : false" aria-controls="collapse{{i}}">
+                    Collapsible Group Item #{{i}}
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapse{{i}}" class="collapse show" aria-labelledby="heading{{i}}" data-parent="#accordionExample">
+            <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="accordion" id="accordionExample">
+    <div class="card" [attr.id]="'accordion_' + i" *ngFor="let p of orders; let i = index;">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" [attr.data-parent]="'#accordion_' + i"
+                    [attr.href]="'#collapseOne_' + i">Pedido del dia: {{p.date | dateAgo}} </button>
+            </h5>
+        </div>
+        <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse in">
+            <div class="card-body">
+                <p class="mb-1" *ngFor="let l of p.orderLines"> {{l.name}} x{{l.quantity}}</p>
+                <div class="row">
+                    <h3 class="col">{{p.grossAmount | number : '1.2-2'}} €</h3>
+                    <button (click)="addToCart(p.orderLines)" type="button" class="btn btn-primary COL">Pedir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

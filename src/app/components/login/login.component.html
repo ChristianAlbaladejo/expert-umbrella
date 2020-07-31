@@ -8,19 +8,29 @@
         </div>
 
         <!-- Login Form -->
-            <form #loginForm="ngForm" (ngSubmit)="login()" >
-            <input type="email" #email="ngModel" id="email" [(ngModel)]="user.email" class="fadeIn second" name="login" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+            <input type="email" #email="ngModel" id="email" [(ngModel)]="user.email" class="fadeIn second" name="login"
+                placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
             <span *ngIf="!email.valid && email.touched">
-               <br> El email no es correcto
+                <br> El email no es correcto
             </span>
-            <input type="password" [(ngModel)]="user.password" id="email" class="fadeIn third" name="login" placeholder="Contraseña" required />
-            <input type="submit" class="fadeIn fourth" value="Log In" [routerLink]="['/product']"  [disabled]="!loginForm.form.valid" />
+            <input type="password" [(ngModel)]="user.password" id="pass" class="fadeIn third" name="login"
+                placeholder="Contraseña" required />
+            <input type="submit" class="fadeIn fourth" value="Log In" [disabled]="!loginForm.form.valid" />
             <input type="button" class="fadeIn fourth" value="Registrate" [routerLink]="['/register']" />
         </form>
 
         <!-- Remind Passowrd -->
-     <!--    <div id="formFooter">
+        <!--    <div id="formFooter">
             <a class="underlineHover" href="#">Forgot Password?</a>
         </div> -->
     </div>
+</div>
+<div class="alert alert-success" id="success-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Bien! </strong> Te has registrado correctamente.
+</div>
+<div class="alert alert-danger" id="danger-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Ohh! </strong> Parece que hay un problema.
 </div>

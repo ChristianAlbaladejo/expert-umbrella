@@ -13,7 +13,11 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { SimpleProductComponent } from './components/simple-product/simple-product.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { OrdersComponent } from './components/orders/orders.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,6 +31,10 @@ export function httpTranslateLoader(http: HttpClient) {
     ProductsComponent,
     CartComponent,
     FilterProductsComponent,
+    SimpleProductComponent,
+    OrdersComponent,
+    DateAgoPipe,
+    
   ],
   imports: [
     BrowserModule,
@@ -34,6 +42,7 @@ export function httpTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     HttpClientModule,
+    NgxStripeModule.forRoot('pk_test_51H9oTAATbeiMfoWZHrm3q0QCUtANPgu7FJ2x1CLcb5zCALiQ3yGdCq23LjRC4D6KGtzyDeeIUKu8hruQneZBBfHs00fbbXUCym'),
     ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
@@ -42,6 +51,7 @@ export function httpTranslateLoader(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
