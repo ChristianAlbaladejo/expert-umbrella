@@ -35,14 +35,15 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col" >
+        <div class="col">
             <div *ngIf="search==''">
-                <div class="columna" *ngFor="let famili of families" [routerLink]="['/product/filtered']"
-                    [state]="{ id: famili.id}"
-                    class="card-1 img-fluid img-thumbnail shadow-sm p-3 mb-5 bg-white rounded"
-                    [ngStyle]="{'background': ' url(../../../assets/' + famili.name + '.jpg) no-repeat 0 0','background-size': '100% 100%'}">
-                    <div class="card-body-1 h4">
-                        {{famili.name | uppercase | translate }}
+                <div *ngFor="let famili of families">
+                    <div class="columna" [routerLink]="['/product/filtered']" [state]="{ id: famili.id}"
+                        class="card-1 img-fluid img-thumbnail shadow-sm p-3 mb-5 bg-white rounded"
+                        [ngStyle]="{'background': ' url(../../../assets/' + famili.name + '.jpg) no-repeat 0 0','background-size': '100% 100%'}">
+                        <div class="card-body-1 h4">
+                            {{famili.name | uppercase | translate }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -64,9 +65,7 @@
                     </h1> 
                     </div>-->
                 <div class="row">
-                    <img class="img-product "
-                        src="../../../assets/mug.jpg"
-                        alt="Card image cap">
+                    <img class="img-product " src="../../../assets/mug.jpg" alt="Card image cap">
                     <div class="text col">
                         <h6 class="card-title">{{p.name}}</h6>
                         <h4 class="price">{{p.costPrice }} €</h4>
@@ -98,7 +97,3 @@
         <strong>Tienes un nuevo producto en el carrito </strong>
     </div>
 </footer>
-
-
-
-

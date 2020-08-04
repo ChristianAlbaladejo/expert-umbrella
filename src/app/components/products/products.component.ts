@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ErrorHandler } from '@angular/core';
 import { ProductsService } from '../../../app/services/products.service';
 import { UserService } from '../../../app/services/user.service';
 import { Product } from '../../../app/models/product';
@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import * as $ from "jquery";
 import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-products',
@@ -17,7 +18,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ProductsComponent implements OnInit {
   test;
   public product: Product;
-  public families;
+  public families = [] ;
   public products: Product[];
   public cart = [];
   public count: number = 0;
@@ -31,7 +32,7 @@ export class ProductsComponent implements OnInit {
     private _router: Router,
     public translate: TranslateService
   ) {
-/*     this.product = new Product('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''); */
+    /*     this.product = new Product('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''); */
 
     translate.addLangs(['en', 'es']);
     translate.setDefaultLang('es');
@@ -39,16 +40,29 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     $(document).ready(function () {
-    $("#success-alert").hide();
+      $("#success-alert").hide();
     })
     let array = localStorage.getItem('cart');
     array = JSON.parse(array);
     for (let i = 0; i < array.length; i++) {
       this.cart.push(array[i]);
     }
+  }
+
+  ngAfterViewInit(): void{
     this._productsService.getFamilies().subscribe(
       (response) => {
-        this.families = response;
+        for (let i = 0; i < response.length; i++) {
+          var image = new Image();
+          let self = this;
+          image.onload = function () {
+            // image exists and is loaded
+            self.families.push(response[i]);
+          }
+          image.onerror = function () {
+          }
+          image.src = '../../../assets/' + response[i].name + '.jpg'
+        }
       },
       (error) => {
       }
@@ -131,5 +145,4 @@ export class ProductsComponent implements OnInit {
       $("#success-alert").slideUp(500);
     });
   }
-
 }

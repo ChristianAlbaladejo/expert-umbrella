@@ -64,11 +64,18 @@ footer a {
     text-align: center;
 }
 
+.prices{
+   margin-left: -1em ;
+   padding-left: 0px;
+    width: 89px;
+}
 
-
+.botones{
+    margin-bottom: 0.3em;
+}
 
 input{
   &::-webkit-inner-spin-button{
-    opacity:1; // magic!
+    opacity:1; 
   } 
 }

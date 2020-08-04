@@ -18,6 +18,7 @@ export class SimpleProductComponent implements OnInit, OnDestroy {
   public families;
   public products: Product[];
   public cart = [];
+  public restUrl;
 
   constructor(
     private _productsService: ProductsService,

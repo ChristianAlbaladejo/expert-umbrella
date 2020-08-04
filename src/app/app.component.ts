@@ -24,6 +24,7 @@ export class AppComponent {
   number = 0;
   subscription: Subscription;
   private translateBtn: any;
+  identity;
 
   constructor(
     private _route: ActivatedRoute,
@@ -36,8 +37,10 @@ export class AppComponent {
 
   ngOnInit() {
     this.number = setInterval(() => {
+      let identity = JSON.parse(localStorage.getItem('identity'));
       let array= JSON.parse(localStorage.getItem('cart'));
      this.number = array.length
+     this.identity = identity[0];
     }, 1000);
     this.solution.getSolution().subscribe((res) => (this.data = res));
     this.translateBtn = document.getElementById('translatebtn');

@@ -48,21 +48,21 @@
 
                 <td></td>
                 <td>Sub-Total</td>
-                <td class="text-right">{{total  | number : '1.2-2'}} €</td>
+                <td class="prices">{{total  | number : '1.2-2'}} €</td>
               </tr>
               <tr>
                 <td></td>
 
                 <td></td>
                 <td>Shipping</td>
-                <td class="text-right">{{shipping}} €</td>
+                <td class="prices">{{shipping}} €</td>
               </tr>
               <tr>
                 <td></td>
 
                 <td></td>
                 <td><strong>Total</strong></td>
-                <td class="text-right"><strong>{{total + shipping | number : '1.2-2'}} €</strong></td>
+                <td class="prices"><strong>{{total + shipping | number : '1.2-2'}} €</strong></td>
               </tr>
             </tbody>
           </table>
@@ -127,15 +127,14 @@
         <textarea [(ngModel)]="orderNotes" name="notes" class="form-control" rows="3"></textarea>
         <br>
         <div class="form-group">
-          <label for="direccion">Seleccione la fecha que quieres tu pedido:</label>
+          <label for="direccion">Selecciona fecha y hora de entrega/recogida:</label>
           <input [(ngModel)]="fechaRecogida" type="datetime-local" [(min)]="currentDate" required>
         </div>
         <div class="row">
-          <button class="btn  btn-light col-12 col-md-4 botones" [routerLink]="['/product']">Continuar
-            comprando</button>
+          <button class="btn btn-lg  btn-danger text-uppercase col-12 col-md-4 botones" [routerLink]="['/product']">CONTINUAR COMPRANDO</button>
           <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones" [disabled]="!fechaRecogida"
             (click)="pay(total)">
-            Pedir
+            Pedir ahora
           </button>
         </div>
       </div>

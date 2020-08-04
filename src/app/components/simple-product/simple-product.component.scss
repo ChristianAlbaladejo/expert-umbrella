@@ -19,6 +19,13 @@ body {
       max-width: 75%;
   }
 
+.img-product {
+  width: 350px !important;
+  height: 350px !important;
+  background-repeat: no-repeat;
+  background-size: 350px 350px;;
+}
+
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1
 }
@@ -103,10 +110,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .md-number-input.number-input input[type="number"] {
   max-width: 3.5rem;
-  padding: 0.5rem;
   border: solid #ddd;
   border-width: 0 2px;
-  font-size: 2rem;
+  font-size: 2.3rem;
   height: 3rem;
   font-weight: bold;
   outline: none;
@@ -118,4 +124,8 @@ input[type="number"]::-webkit-outer-spin-button {
       margin-top: -0.6rem;
     }
   }
+}
+
+a{
+  zoom: 1.8;
 }
