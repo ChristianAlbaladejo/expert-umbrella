@@ -78,7 +78,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .number-input[_ngcontent-asr-c50] {
-  margin: -1em !important;
+  margin: -1.3em !important;
 }
 .number-input button.plus:after {
   transform: translate(-50%, -50%) rotate(90deg);
@@ -112,7 +112,7 @@ input[type="number"]::-webkit-outer-spin-button {
   max-width: 3.5rem;
   border: solid #ddd;
   border-width: 0 2px;
-  font-size: 2.6rem;
+  font-size: 2.3rem;
   height: 3rem;
   font-weight: bold;
   outline: none;
@@ -121,7 +121,7 @@ input[type="number"]::-webkit-outer-spin-button {
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
     .number-input.md-number-input.safari_only button:before,
     .number-input.md-number-input.safari_only button:after {
-      margin-top: -0.1rem;
+      margin-top: 0rem;
     }
   }
 }
