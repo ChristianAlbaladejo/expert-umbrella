@@ -43,7 +43,7 @@ export class SimpleProductComponent implements OnInit, OnDestroy {
         this.families = response;
       },
       (error) => {
-      }
+      2}
     );
     this.load();
 

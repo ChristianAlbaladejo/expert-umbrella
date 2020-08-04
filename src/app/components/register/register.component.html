@@ -24,7 +24,7 @@
             <input type="password" id="password2" class="fadeIn third" name="login" placeholder="Repite la contraseña" [(ngModel)]="password2" required />
             <input type="submit" class="fadeIn fourth" value="Registrar" [disabled]="!registerForm.form.valid"  />
 
-            <input type="button" class="fadeIn fourth" value="Login" [routerLink]="['/login']" />
+            <input type="button" class="fadeIn fourth" value="Login" [routerLink]="['/login']" [state]="{ flag: 'false'}" />
         </form>
     </div>
 </div>

@@ -67,75 +67,90 @@
             </tbody>
           </table>
         </div>
+        <div class="text-right">
+          <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones" *ngIf="!ifLogin()"
+            [disabled]="!fechaRecogida" (click)="pay(total)">
+            Pedir ahora
+          </button>
+
+          <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones" *ngIf="ifLogin()"
+            [routerLink]="['/login']" [state]="{ flag: 'true'}">
+            Pedir ahora
+          </button>
+        </div>
       </div>
-      <div class="col mb-2">
-        <div class="row">
-          <div class="col">
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked
-                (change)="onChangeRadio('rtienda')">
-              <label class="custom-control-label" for="defaultChecked">Recoger en tienda</label>
+
+
+      <div *ngIf="!ifLogin()">
+        <div class="col mb-2">
+          <div class="row">
+            <div class="col">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked
+                  (change)="onChangeRadio('rtienda')">
+                <label class="custom-control-label" for="defaultChecked">Recoger en tienda</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios"
+                  (change)="onChangeRadio('delivery')">
+                <label class="custom-control-label" for="defaultUnchecked">Pedir a domicilio</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="defaultUnchecked2" name="defaultExampleRadios"
+                  (change)="onChangeRadio('tienda')">
+                <label class="custom-control-label" for="defaultUnchecked2">Tomar en mesa</label>
+              </div>
             </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios"
-                (change)="onChangeRadio('delivery')">
-              <label class="custom-control-label" for="defaultUnchecked">Pedir a domicilio</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="defaultUnchecked2" name="defaultExampleRadios"
-                (change)="onChangeRadio('tienda')">
-              <label class="custom-control-label" for="defaultUnchecked2">Tomar en mesa</label>
+            <div class="col">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="tarjeta" name="formadepago" checked
+                  (change)="formaDePago('tarjeta')">
+                <label class="custom-control-label" for="tarjeta">Pagar con tarjeta</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="efectivo" name="formadepago"
+                  (change)="formaDePago('efectivo')">
+                <label class="custom-control-label" for="efectivo">Efectivo</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="credit" name="formadepago"
+                  (change)="formaDePago('credit')">
+                <label class="custom-control-label" for="credit">Solicitar credito</label>
+              </div>
             </div>
           </div>
-          <div class="col">
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="tarjeta" name="formadepago" checked
-                (change)="formaDePago('tarjeta')">
-              <label class="custom-control-label" for="tarjeta">Pagar con tarjeta</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="efectivo" name="formadepago"
-                (change)="formaDePago('efectivo')">
-              <label class="custom-control-label" for="efectivo">Efectivo</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="credit" name="formadepago"
-                (change)="formaDePago('credit')">
-              <label class="custom-control-label" for="credit">Solicitar credito</label>
-            </div>
+          <div class="form-group" *ngIf="displayForm">
+            <label for="direccion">Dirección</label>
+            <input [(ngModel)]="user[0].calle" type="text" class="form-control" id="direccion"
+              aria-describedby="direccionHelp" [(placeholder)]="user[0].calle">
+            <small id="direccionHelp" class="form-text text-muted">Si quiere otra dirección cambiela aqui</small>
+            <br>
+            <label for="cp">CP</label>
+            <input [(ngModel)]="user[0].CP" type="text" class="form-control" id="cp" [(placeholder)]="user[0].CP">
+            <br>
+            <label for="poblacion">Poblacion</label>
+            <input [(ngModel)]="user[0].poblacion" type="text" class="form-control" id="poblacion"
+              [(placeholder)]="user[0].poblacion">
+            <br>
+            <label for="telefono">Telefono</label>
+            <input [(ngModel)]="user[0].telefono" type="text" class="form-control" id="telefono"
+              [(placeholder)]="user[0].telefono">
           </div>
-        </div>
-        <div class="form-group" *ngIf="displayForm">
-          <label for="direccion">Dirección</label>
-          <input [(ngModel)]="user[0].calle" type="text" class="form-control" id="direccion"
-            aria-describedby="direccionHelp" [(placeholder)]="user[0].calle">
-          <small id="direccionHelp" class="form-text text-muted">Si quiere otra dirección cambiela aqui</small>
           <br>
-          <label for="cp">CP</label>
-          <input [(ngModel)]="user[0].CP" type="text" class="form-control" id="cp" [(placeholder)]="user[0].CP">
+          <label for="exampleFormControlTextarea1">Notas:</label>
+          <textarea [(ngModel)]="orderNotes" name="notes" class="form-control" rows="3"></textarea>
           <br>
-          <label for="poblacion">Poblacion</label>
-          <input [(ngModel)]="user[0].poblacion" type="text" class="form-control" id="poblacion"
-            [(placeholder)]="user[0].poblacion">
-          <br>
-          <label for="telefono">Telefono</label>
-          <input [(ngModel)]="user[0].telefono" type="text" class="form-control" id="telefono"
-            [(placeholder)]="user[0].telefono">
-        </div>
-        <br>
-        <label for="exampleFormControlTextarea1">Notas:</label>
-        <textarea [(ngModel)]="orderNotes" name="notes" class="form-control" rows="3"></textarea>
-        <br>
-        <div class="form-group">
-          <label for="direccion">Selecciona fecha y hora de entrega/recogida:</label>
-          <input [(ngModel)]="fechaRecogida" type="datetime-local" [(min)]="currentDate" required>
-        </div>
-        <div class="row">
+          <div class="form-group">
+            <label for="direccion">Selecciona fecha y hora de entrega/recogida:</label>
+            <input [(ngModel)]="fechaRecogida" type="datetime-local" [(min)]="currentDate" required>
+          </div>
+          <!-- <div class="row">
           <button class="btn btn-lg  btn-danger text-uppercase col-12 col-md-4 botones" [routerLink]="['/product']">CONTINUAR COMPRANDO</button>
           <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones" [disabled]="!fechaRecogida"
             (click)="pay(total)">
             Pedir ahora
           </button>
+        </div> -->
         </div>
       </div>
     </div>

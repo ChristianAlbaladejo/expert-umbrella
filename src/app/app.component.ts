@@ -40,7 +40,7 @@ export class AppComponent {
       let identity = JSON.parse(localStorage.getItem('identity'));
       let array= JSON.parse(localStorage.getItem('cart'));
      this.number = array.length
-     this.identity = identity[0];
+     this.identity = identity;
     }, 1000);
     this.solution.getSolution().subscribe((res) => (this.data = res));
     this.translateBtn = document.getElementById('translatebtn');

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../../app/models/user';
 import { UserService } from '../../../app/services/user.service';
 import * as $ from "jquery";
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,17 +14,21 @@ export class LoginComponent implements OnInit {
   public user: User;
   public token;
   public identity;
+  public gotocart;
+  routeState;
+  state$: Observable<object>;
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService) {
-    this.user = new User("", "", "", "", "", "","", "", "");
+    this.user = new User("", "", "", "", "", "", "", "", "");
+    this.gotocart = this._router.getCurrentNavigation().extras.state.flag;
   }
 
   ngOnInit(): void {
     $(document).ready(function () {
-    $("#success-alert").hide();
-    $("#danger-alert").hide();
+      $("#success-alert").hide();
+      $("#danger-alert").hide();
     })
   }
 
@@ -40,7 +45,11 @@ export class LoginComponent implements OnInit {
         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
           $("#success-alert").slideUp(500);
         });
-        this._router.navigate(['/products']);
+        if (this.gotocart) {
+          this._router.navigate(['/cart']);
+        } else {
+          this._router.navigate(['/products']);
+        }
       },
       error => {
         var errorMessage = <any>error;

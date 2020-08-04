@@ -113,7 +113,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   async buy() {
     if (this.ifLogin()) {
-      this._router.navigate(['/login']);
+      
     } else if (this.fechaRecogida != undefined) {
 
       this.lastOrder();
@@ -331,7 +331,7 @@ export class CartComponent implements OnInit, OnDestroy {
   pay(amount) {
 
     if (this.ifLogin()) {
-      this._router.navigate(['/login']);
+      
     } else {
       if (this.chargesType == 'tarjeta') {
         var handler = (<any>window).StripeCheckout.configure({
