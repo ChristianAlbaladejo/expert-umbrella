@@ -89,7 +89,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .md-number-input.number-input {
   border: 2px solid #ddd;
-  max-height: 3.1em;
   width: 8.8rem;
 }
 .md-number-input.number-input button {
@@ -116,12 +115,13 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 2.3rem;
   height: 3rem;
   font-weight: bold;
+  margin-top: -0.3em;
 }
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
     .number-input.md-number-input.safari_only button:before,
     .number-input.md-number-input.safari_only button:after {
-      margin-top: -0.5rem;
+      margin-top: 0;
     }
   }
 }
