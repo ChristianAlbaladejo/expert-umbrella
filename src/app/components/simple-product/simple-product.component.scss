@@ -121,7 +121,7 @@ input[type="number"]::-webkit-outer-spin-button {
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
     .number-input.md-number-input.safari_only button:before,
     .number-input.md-number-input.safari_only button:after {
-      margin-top: -0.6rem;
+      margin-top: -0.1rem;
     }
   }
 }
