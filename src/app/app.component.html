@@ -8,7 +8,7 @@
     </svg>
   </a>
   <div *ngIf="identity">
-    <a *ngIf="!ifLogin()">Hola: {{identity.name }} {{identity.lastname}} </a>
+    <a *ngIf="!ifLogin()">Hola: {{identity[0].name }} {{identity[0].lastname}} </a>
   </div>
   <!--  <select id="lang" [(formControl)]="lang" (change)="send()">
     <option value="en" selected>English</option>
