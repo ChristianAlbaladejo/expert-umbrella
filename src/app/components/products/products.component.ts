@@ -63,6 +63,7 @@ export class ProductsComponent implements OnInit {
           }
           image.src = '../../../assets/' + response[i].name + '.jpg'
         }
+        this.families.sort((a, b) => parseFloat(b.showInPos) - parseFloat(a.showInPos));
       },
       (error) => {
       }

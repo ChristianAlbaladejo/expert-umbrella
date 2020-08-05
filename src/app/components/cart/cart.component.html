@@ -68,20 +68,9 @@
           </table>
         </div>
         <div class="text-right" *ngIf="!loading">
-          <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones" *ngIf="!ifLogin()"
-            [disabled]="!fechaRecogida" (click)="pay(total)">
-            Pedir ahora
-          </button>
-
           <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones" *ngIf="ifLogin()"
             [routerLink]="['/login']" [state]="{ flag: 'true'}">
             Pedir ahora
-          </button>
-        </div>
-        <div class="text-right" *ngIf="loading">
-          <button class="btn btn-lg btn-primary col-12 col-md-4 botones" type="button" disabled>
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            Loading...
           </button>
         </div>
       </div>
@@ -148,16 +137,25 @@
           <textarea [(ngModel)]="orderNotes" name="notes" class="form-control" rows="3"></textarea>
           <br>
           <div class="form-group">
-            <label for="direccion">Selecciona fecha y hora de entrega/recogida:</label>
-            <input [(ngModel)]="fechaRecogida" type="datetime-local" [(min)]="currentDate" required>
+            <div class="row">
+              <label class="col">Selecciona fecha y hora de entrega/recogida:</label>
+              <input class="col" [(ngModel)]="fechaRecogida" type="datetime-local" [(min)]="currentDate" required>
+            </div>
           </div>
-          <!-- <div class="row">
-          <button class="btn btn-lg  btn-danger text-uppercase col-12 col-md-4 botones" [routerLink]="['/product']">CONTINUAR COMPRANDO</button>
-          <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones" [disabled]="!fechaRecogida"
-            (click)="pay(total)">
-            Pedir ahora
-          </button>
-        </div> -->
+          <div class="row">
+            <button class="btn btn-lg  btn-danger text-uppercase col-12 col-md-4 botones"
+              [routerLink]="['/product']">CONTINUAR COMPRANDO</button>
+            <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones"
+              *ngIf="!ifLogin() && !loading" [disabled]="!fechaRecogida" (click)="pay(total)">
+              Pedir ahora
+            </button>
+
+            <button *ngIf="loading" class="btn btn-lg btn-primary col-12 col-md-4 botones" type="button" disabled>
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Loading...
+            </button>
+
+          </div>
         </div>
       </div>
     </div>

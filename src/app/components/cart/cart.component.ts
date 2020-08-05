@@ -46,7 +46,7 @@ export class CartComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.load();
     },
-      500);
+      300);
     this.user = localStorage.getItem("identity")
     this.user = JSON.parse(this.user);
     var f = new Date();
