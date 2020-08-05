@@ -117,6 +117,19 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: bold;
   margin-top: -0.3em;
 }
+
+@media only screen and (max-width: 600px) {
+  .md-number-input.number-input input[type="number"] {
+  max-width: 3.5rem;
+  border: solid #ddd;
+  border-width: 0 2px;
+  font-size: 2.3rem;
+  height: 3.1rem;
+  font-weight: bold;
+  margin-top: -0.3em;
+}
+}
+
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
     .number-input.md-number-input.safari_only button:before,
