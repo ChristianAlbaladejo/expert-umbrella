@@ -3,3 +3,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.goog-logo-link {
+   display:none !important;
+} 
+
+.goog-te-gadget{
+    margin: 1em;
+    margin-bottom: -1em;
+   color: transparent !important;
+}
