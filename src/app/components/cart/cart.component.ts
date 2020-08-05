@@ -19,6 +19,7 @@ export class CartComponent implements OnInit, OnDestroy {
   public family = [];
   public user;
   public fechaRecogida;
+  public loading = false;
   displayForm = false;
   total = 0;
   lastOrderId;
@@ -56,7 +57,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.loadStripe();
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
   onChange($event, p) {
     this.total = 0;
@@ -65,11 +66,11 @@ export class CartComponent implements OnInit, OnDestroy {
       var perProduct = this.products[i]["costPrice"] * this.products[i]["quantity"];
       this.total = perProduct + this.total;
     }
-   if (this.total>30) {
-     this.shipping=0
-   }else{
-     this.shipping=5
-   }
+    if (this.total > 30) {
+      this.shipping = 0
+    } else {
+      this.shipping = 5
+    }
     localStorage.setItem('cart', JSON.stringify(this.products));
   }
 
@@ -93,7 +94,7 @@ export class CartComponent implements OnInit, OnDestroy {
     } else {
       this.shipping = 5
     }
-    
+
   }
 
   deleteProduct(p) {
@@ -112,8 +113,9 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   async buy() {
+    this.loading = true;
     if (this.ifLogin()) {
-      
+
     } else if (this.fechaRecogida != undefined) {
 
       this.lastOrder();
@@ -143,7 +145,7 @@ export class CartComponent implements OnInit, OnDestroy {
     }
 
     if (this.total >= 30) {
-      lines += "<Line Index=" + '"' + lastIndex+1 + '"' + " CreationDate = " + '"' + dt.toISOString() + '"' + " Type = " + '"' + 'Standard' + '"' + " ParentIndex =" + '"' + '"' + " ProductId = " + '"' +1217 + '"' + " ProductName = " + '"' + 'portes' + '"' + " SaleFormatId = " + '"' +1217 + '"' + " SaleFormatName = " + '"' + 'portes' + '"' + " SaleFormatRatio = " + '"' + '1.00' + '"' + " MainBarcode = " + '"' + '"' + " ProductPrice = " + '"' + 5 + '"' + " VatId = " + '"' + '3' + '"' + " VatRate = " + '"' + '0.10' + '"' + " SurchargeRate = " + '"' + '0.014' + '"' + " ProductCostPrice = " + '"' + '"' + " MenuGroup = " + '"' + '"' + " PreparationTypeId = " + '"' + '2' + '"' + " PreparationTypeName = " + '"' + 'Cocina' + '"' + " PLU =" + '"' + '"' + " FamilyId = " + '"' + 11 + '"' + " FamilyName = " + '"' + 'HALLOWEN' + '"' + " PreparationOrderId = " + '"' + '4' + '"' + "  PreparationOrderName = " + '"' + 'Postres' + '"' + " Quantity = " + '"' +1 + '"' + " UnitCostPrice =" + '"' + '"' + " TotalCostPrice = " + '"' + '"' + " UserId = " + '"' + '4' + '"' + " UnitPrice = " + '"' +5 + '"' + " DiscountRate = " + '"' + '0.00' + '"' + " CashDiscount = " + '"' + '0.00' + '"' + " OfferId =" + '"' + '"' + "  OfferCode = " + '"' + '"' + " TotalAmount = " + '"' +5 + '"' + "> <Notes><![CDATA[]]></Notes> </Line> "
+      lines += "<Line Index=" + '"' + lastIndex + 1 + '"' + " CreationDate = " + '"' + dt.toISOString() + '"' + " Type = " + '"' + 'Standard' + '"' + " ParentIndex =" + '"' + '"' + " ProductId = " + '"' + 1217 + '"' + " ProductName = " + '"' + 'portes' + '"' + " SaleFormatId = " + '"' + 1217 + '"' + " SaleFormatName = " + '"' + 'portes' + '"' + " SaleFormatRatio = " + '"' + '1.00' + '"' + " MainBarcode = " + '"' + '"' + " ProductPrice = " + '"' + 5 + '"' + " VatId = " + '"' + '3' + '"' + " VatRate = " + '"' + '0.10' + '"' + " SurchargeRate = " + '"' + '0.014' + '"' + " ProductCostPrice = " + '"' + '"' + " MenuGroup = " + '"' + '"' + " PreparationTypeId = " + '"' + '2' + '"' + " PreparationTypeName = " + '"' + 'Cocina' + '"' + " PLU =" + '"' + '"' + " FamilyId = " + '"' + 11 + '"' + " FamilyName = " + '"' + 'HALLOWEN' + '"' + " PreparationOrderId = " + '"' + '4' + '"' + "  PreparationOrderName = " + '"' + 'Postres' + '"' + " Quantity = " + '"' + 1 + '"' + " UnitCostPrice =" + '"' + '"' + " TotalCostPrice = " + '"' + '"' + " UserId = " + '"' + '4' + '"' + " UnitPrice = " + '"' + 5 + '"' + " DiscountRate = " + '"' + '0.00' + '"' + " CashDiscount = " + '"' + '0.00' + '"' + " OfferId =" + '"' + '"' + "  OfferCode = " + '"' + '"' + " TotalAmount = " + '"' + 5 + '"' + "> <Notes><![CDATA[]]></Notes> </Line> "
     }
     var deliveryDate = new Date(this.fechaRecogida);
     var body = '<?xml version="1.0" encoding = "utf-8" standalone = "yes" ?>' + '<Export>'
@@ -229,6 +231,7 @@ export class CartComponent implements OnInit, OnDestroy {
         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
           $("#success-alert").slideUp(500);
         });
+        this.loading = false;
       }, error => {
         console.log(error)
         let orderlines = JSON.stringify(this.products)
@@ -258,6 +261,7 @@ export class CartComponent implements OnInit, OnDestroy {
         $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
           $("#danger-alert").slideUp(500);
         });
+          this.loading = false;
       });
   }
   async getFamilyName() {
@@ -331,7 +335,7 @@ export class CartComponent implements OnInit, OnDestroy {
   pay(amount) {
 
     if (this.ifLogin()) {
-      
+
     } else {
       if (this.chargesType == 'tarjeta') {
         var handler = (<any>window).StripeCheckout.configure({

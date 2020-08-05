@@ -67,7 +67,7 @@
             </tbody>
           </table>
         </div>
-        <div class="text-right">
+        <div class="text-right" *ngIf="!loading">
           <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones" *ngIf="!ifLogin()"
             [disabled]="!fechaRecogida" (click)="pay(total)">
             Pedir ahora
@@ -78,7 +78,14 @@
             Pedir ahora
           </button>
         </div>
+        <div class="text-right" *ngIf="loading">
+          <button class="btn btn-lg btn-primary col-12 col-md-4 botones" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+          </button>
+        </div>
       </div>
+
 
 
       <div *ngIf="!ifLogin()">
