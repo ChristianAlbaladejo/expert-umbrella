@@ -132,25 +132,20 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-top: -0.8em;
   }
 } */
-
-@media not all and (min-resolution: 0.001dpcm) {
-  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-    .number-input.md-number-input.safari_only button:before,
-    .number-input.md-number-input.safari_only button:after {
-      margin-top: -1em;
-    }
-    .md-number-input.number-input input[type="number"] {
-      max-width: 3.5rem;
-      border: solid #ddd;
-      border-width: 0 2px;
-      font-size: 2.3rem;
-      height: 3rem;
-      font-weight: bold;
-      margin-top: -0.3em;
-    }
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+  a {
+    zoom: 1.8;
+  }
+  .md-number-input.number-input input[type="number"] {
+    max-width: 3.5rem;
+    border: solid #ddd;
+    border-width: 0 2px;
+    font-size: 2.3rem;
+    height: 3rem;
+    font-weight: bold;
+    margin-top: -0.3em;
   }
 }
-
 a {
   zoom: 1.8;
 }
