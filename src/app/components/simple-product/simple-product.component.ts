@@ -5,6 +5,7 @@ import { Product } from '../../../app/models/product';
 import { User } from '../../../app/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 import * as $ from "jquery";
 @Component({
   selector: 'app-simple-product',
@@ -55,7 +56,10 @@ export class SimpleProductComponent implements OnInit, OnDestroy {
       this._router.navigateByUrl('/product/filtered2', { state: { id: this.product['familyId'] } });
     }
   }
-
+  change(value: number, p): void {
+    p.quantity = value;
+  }
+  
   load() {
     if (this.test == null || this.test == undefined) {
       this._router.navigate(['/products']);
@@ -104,5 +108,6 @@ export class SimpleProductComponent implements OnInit, OnDestroy {
   quitQuantity(p) {
     p.quantity -= 1;
   }
+
 
 }

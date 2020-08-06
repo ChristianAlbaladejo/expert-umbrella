@@ -18,6 +18,7 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { OrdersComponent } from './components/orders/orders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
+import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,6 +45,7 @@ export function httpTranslateLoader(http: HttpClient) {
     HttpClientModule,
     NgxStripeModule.forRoot('pk_test_51H9oTAATbeiMfoWZHrm3q0QCUtANPgu7FJ2x1CLcb5zCALiQ3yGdCq23LjRC4D6KGtzyDeeIUKu8hruQneZBBfHs00fbbXUCym'),
     ReactiveFormsModule,
+    NgxNumberSpinnerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

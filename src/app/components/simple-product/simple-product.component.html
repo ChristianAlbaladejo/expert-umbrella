@@ -30,7 +30,7 @@
 
                         <div class="col">
                             <label for="Quantity" class=" form-control-label">Cantidad:</label>
-                            <div class="number-input md-number-input">
+                            <!-- <div class="number-input md-number-input">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                     class="minus" (click)="quitQuantity(product)"
                                     [disabled]="product.quantity <= 1"></button>
@@ -39,7 +39,11 @@
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                     (click)="addQuantity(product)" class="plus"
                                     [disabled]="product.quantity > 98"></button>
-                            </div>
+                            </div> -->
+                            <form [formGroup]="form">
+                                <ngx-number-spinner  [(ngModel)]="product.quantity" (change)="change($event, product)"  formControlName="price" [min]="1" [max]="999"></ngx-number-spinner>
+                            </form>
+
                         </div>
 
                         <div class="col">
