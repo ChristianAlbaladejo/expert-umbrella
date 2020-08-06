@@ -1,33 +1,39 @@
 body {
-     font-family: 'Open Sans' !important; 
-  }
+  font-family: "Open Sans" !important;
+}
 
-  .page-header, h2 {
-   font-family: 'Open Sans' !important; 
-  }
+.page-header,
+h2 {
+  font-family: "Open Sans" !important;
+}
 
+p,
+.caption h4,
+label,
+table,
+.panel,
+#contactpage > h2.success,
+#contactpage h2.error {
+  font-size: 14px !important;
+}
 
-   p, .caption h4, label, table, .panel, #contactpage > h2.success, #contactpage h2.error  {
-    font-size: 14px !important;
-  }
+h2 {
+  font-size: 30px !important;
+}
 
-  h2 {
-    font-size: 30px !important;
-  }
-
-  .form-control{
-      max-width: 75%;
-  }
+.form-control {
+  max-width: 75%;
+}
 
 .img-product {
   width: 350px !important;
   height: 350px !important;
   background-repeat: no-repeat;
-  background-size: 350px 350px;;
+  background-size: 350px 350px;
 }
 
-input[type=number]::-webkit-inner-spin-button {
-    opacity: 1
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 1;
 }
 
 .row {
@@ -37,16 +43,16 @@ input[type=number]::-webkit-inner-spin-button {
   margin-left: -8px;
 }
 
-.adc{
+.adc {
   margin-left: 0em;
-    margin-top: 2em;
+  margin-top: 2em;
 }
 
-  .description{
-       max-width: 70%;
-  }
+.description {
+  max-width: 70%;
+}
 
-  input[type="number"] {
+input[type="number"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
@@ -120,14 +126,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media only screen and (max-width: 600px) {
   .md-number-input.number-input input[type="number"] {
-  max-width: 3.5rem;
-  border: solid #ddd;
-  border-width: 0 2px;
-  font-size: 2.3rem;
-  height: 3.3rem;
-  font-weight: bold;
-  margin-top: -0.8em;
-}
+    max-width: 3.5rem;
+    border: solid #ddd;
+    border-width: 0 2px;
+    font-size: 2.3rem;
+    height: 3.3rem;
+    font-weight: bold;
+    margin-top: -0.8em;
+  }
 }
 
 @media not all and (min-resolution: 0.001dpcm) {
@@ -139,6 +145,6 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-a{
+a {
   zoom: 1.8;
 }
