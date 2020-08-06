@@ -136,14 +136,24 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-@media not all and (min-resolution: 0.001dpcm) {
+/* @supports (-webkit-touch-callout: none) {
+  max-width: 3.5rem;
+    border: solid #ddd;
+    border-width: 0 2px;
+    font-size: 2.3rem;
+    height: 3.3rem;
+    font-weight: bold;
+    margin-top: -0.8em;
+} */
+
+/* @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
     .number-input.md-number-input.safari_only button:before,
     .number-input.md-number-input.safari_only button:after {
       margin-top: -0.5em;
     }
   }
-}
+} */
 
 a {
   zoom: 1.8;
