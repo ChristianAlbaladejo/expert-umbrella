@@ -2,8 +2,8 @@
   <button class="openbtn" (click)="openNav()">☰ </button>
   <a class="navbar-brand" href="#">Panes & Co</a>
   <a>
-    <svg width="2em" height="2em" *ngIf="ifLogin()" [routerLink]="['/login']" [state]="{ flag: 'false'}" viewBox="0 0 16 16"
-      class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <svg width="2em" height="2em" *ngIf="ifLogin()" [routerLink]="['/login']" [state]="{ flag: 'false'}"
+      viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
     </svg>
   </a>
@@ -52,8 +52,12 @@
   <a *ngIf="ifLogin()" [routerLink]="['/login']" [state]="{ flag: 'false'}">Log-in</a>
   <a href="" *ngIf="!ifLogin()" (click)="logout()">Log-out</a>
 </div>
-<div id="google_translate_element"></div>
 
+<div class="row">
+  <div  class="col" id="google_translate_element"></div>
+  
+  <a class="fas fa-utensils col text-right menu" href="../assets/carta.pdf"  id="menu"></a>
+</div>
 <!-- <footer (click)="goLogin()">
   <div  class="container-f" *ngIf="ifLogin()" (click)="goLogin()">
     <div class="row">
