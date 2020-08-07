@@ -12,7 +12,8 @@
                     <div id="product-carousel" class="carousel slide">
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active">
-                                <img class="img-product" style="background-image: url(../../../assets/{{product.PLU}}.jpg), url(../../../assets/mug.jpg);">
+                                <img class="img-product"
+                                    style="background-image: url(../../../assets/{{product.PLU}}.jpg), url(../../../assets/mug.jpg);">
                             </div>
                         </div>
                     </div>
@@ -40,9 +41,10 @@
                                     (click)="addQuantity(product)" class="plus"
                                     [disabled]="product.quantity > 98"></button>
                             </div> -->
-                            <form [formGroup]="form">
-                                <ngx-number-spinner  [(ngModel)]="product.quantity" (change)="change($event, product)"  formControlName="price" [min]="1" [max]="999"></ngx-number-spinner>
-                            </form>
+
+                            <ngx-number-spinner [(ngModel)]="product.quantity" (change)="change($event, product)"
+                                formControlName="price" [min]="1" [max]="999"></ngx-number-spinner>
+
 
                         </div>
 
@@ -85,8 +87,8 @@
                         <!-- </div> -->
                         <!-- </div> -->
 
-                       <br>
-                       <!-- <div class="col-sm-8 col-md-9 description" name="description">
+                        <br>
+                        <!-- <div class="col-sm-8 col-md-9 description" name="description">
                         <label for="description">Description:</label>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit ullam earum fuga
                                 aliquam sunt error necessitatibus ipsam aut dolor, excepturi architecto iste, rem

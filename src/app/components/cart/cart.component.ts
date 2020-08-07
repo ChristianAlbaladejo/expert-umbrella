@@ -26,7 +26,7 @@ export class CartComponent implements OnInit, OnDestroy {
   orderNotes = '';
   currentDate;
   creditCard = true;
-  chargesType = 'tarjeta';
+  chargesType = 'efectivo';
   shipping = 5
 
   constructor(
@@ -191,7 +191,8 @@ export class CartComponent implements OnInit, OnDestroy {
           'vatAmount': 0,
           'surchargeAmount': 0,
           'sended': true,
-          'userId': this.user[0].id
+          'userId': this.user[0].id,
+           'email': this.user[0].email
         };
         let headers = new HttpHeaders({
           'Content-Type': 'application/json',
@@ -199,7 +200,7 @@ export class CartComponent implements OnInit, OnDestroy {
         });
         this.http
           .post('https://panesandco.herokuapp.com/order',
-            body, { headers: headers })
+            body, { headers: headers})
           .subscribe(data => {
           }, error => {
           });
