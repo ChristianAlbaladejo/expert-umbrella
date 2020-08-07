@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { FilterProductsComponent } from './components/filter-products/filter-products.component';
 import { SimpleProductComponent } from './components/simple-product/simple-product.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 const approutes: Routes = [
   { path: '', redirectTo: '/products', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const approutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'product', component: SimpleProductComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'menu', component: MenuComponent },
 ];
 
 @NgModule({

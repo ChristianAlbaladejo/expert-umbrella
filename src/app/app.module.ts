@@ -19,6 +19,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
+import { MenuComponent } from './components/menu/menu.component';
 
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -35,6 +36,7 @@ export function httpTranslateLoader(http: HttpClient) {
     SimpleProductComponent,
     OrdersComponent,
     DateAgoPipe,
+    MenuComponent,
     
   ],
   imports: [

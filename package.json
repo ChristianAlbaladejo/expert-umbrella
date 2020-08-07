@@ -31,6 +31,7 @@
     "file-exists": "^5.0.1",
     "file-system": "^2.2.2",
     "jquery": "^3.5.1",
+    "ngx-extended-pdf-viewer": "^4.1.0",
     "ngx-number-spinner": "^2.0.0",
     "ngx-stripe": "^10.1.1",
     "node-sass": "^4.14.1",
