@@ -27,8 +27,8 @@ export class CartComponent implements OnInit, OnDestroy {
   currentDate;
   creditCard = true;
   chargesType = 'efectivo';
-  shipping = 5
-
+  shipping = 0;
+  shippingType = true;
   constructor(
     private _productsService: ProductsService,
     private _route: ActivatedRoute,
@@ -66,10 +66,12 @@ export class CartComponent implements OnInit, OnDestroy {
       var perProduct = this.products[i]["costPrice"] * this.products[i]["quantity"];
       this.total = perProduct + this.total;
     }
-    if (this.total > 30) {
-      this.shipping = 0
-    } else {
-      this.shipping = 5
+    if (!this.shippingType) {
+      if (this.total > 30) {
+        this.shipping = 0
+      } else {
+        this.shipping = 5
+      }
     }
     localStorage.setItem('cart', JSON.stringify(this.products));
   }
@@ -89,12 +91,13 @@ export class CartComponent implements OnInit, OnDestroy {
       this.products[i].familyName = familyname
       this.total = perProduct + this.total;
     }
+    if (!this.shippingType) {
     if (this.total > 30) {
       this.shipping = 0
     } else {
       this.shipping = 5
     }
-
+  }
   }
 
   deleteProduct(p) {
@@ -192,7 +195,7 @@ export class CartComponent implements OnInit, OnDestroy {
           'surchargeAmount': 0,
           'sended': true,
           'userId': this.user[0].id,
-           'email': this.user[0].email
+          'email': this.user[0].email
         };
         let headers = new HttpHeaders({
           'Content-Type': 'application/json',
@@ -200,7 +203,7 @@ export class CartComponent implements OnInit, OnDestroy {
         });
         this.http
           .post('https://panesandco.herokuapp.com/order',
-            body, { headers: headers})
+            body, { headers: headers })
           .subscribe(data => {
           }, error => {
           });
@@ -219,7 +222,7 @@ export class CartComponent implements OnInit, OnDestroy {
         var text = {
           "PrinterName": "IMPRESORA",
           "Format": "plain",
-          "Data": '\n\nSE HA GENERADO UN NUEVO PEDIDO AW-' + (parseInt(this.lastOrderId) + 1) + '\n FECHA DE PEDIDO:' + datetime + ' \nCLIENTE: ' + this.user[0].name.toUpperCase() + ' ' + this.user[0].lastname.toUpperCase() + '\n CALLE: ' + this.user[0].calle.toUpperCase() + '\n CIUDAD: ' + 'Murcia' + '\n POBLACION: ' + this.user[0].poblacion.toUpperCase() + '\n CP : ' + this.user[0].CP + '\n CONTACTO : ' + this.user[0].telefono + ' ' + this.user[0].email + '\n TOTAL: ' + Math.round((this.total + Number.EPSILON) * 100) / 100 + 'euros\n RECOGIDA/ENTREGA: ' + this.fechaRecogida.replace(/T/g, ' ') + '\n Forma de Pago: ' + this.chargesType.toUpperCase() + '\n\n\n\n\n\n\n\n\n\n\n'
+          "Data": '\n\nSE HA GENERADO UN NUEVO PEDIDO AW-' + (parseInt(this.lastOrderId) + 1) + '\n FECHA DE PEDIDO:' + datetime + ' \n\nCLIENTE:    ' + this.user[0].name.toUpperCase() + ' ' + this.user[0].lastname.toUpperCase() + '\n CALLE:     ' + this.user[0].calle.toUpperCase() + '\n CIUDAD: ' + '   Murcia' + '\n POBLACION: ' + this.user[0].poblacion.toUpperCase() + '\n CP :       ' + this.user[0].CP + '\n CONTACTO : ' + this.user[0].telefono + ' ' + this.user[0].email + '\n  TOTAL:    ' + Math.round((this.total + Number.EPSILON) * 100) / 100 + 'euros\n RECOGIDA/ENTREGA: ' + this.fechaRecogida.replace(/T/g, ' ') + '\n\n Forma de Pago: ' + this.chargesType.toUpperCase() + '\n\n\n\n\n\n\n\n\n\n\n'
         };
         this.http
           .post('http://90.165.92.139:8984/api/print/',
@@ -263,7 +266,7 @@ export class CartComponent implements OnInit, OnDestroy {
         $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
           $("#danger-alert").slideUp(500);
         });
-          this.loading = false;
+        this.loading = false;
       });
   }
   async getFamilyName() {
@@ -295,19 +298,29 @@ export class CartComponent implements OnInit, OnDestroy {
 
   onChangeRadio(flag) {
     if (flag == 'delivery') {
+      this.shippingType = false;
       this.displayForm = true;
       this.creditCard = true
       this.user = localStorage.getItem("identity")
       this.user = JSON.parse(this.user);
+      if (this.total > 30) {
+        this.shipping = 0
+      } else {
+        this.shipping = 5
+      }
     } else if (flag == 'tienda') {
+      this.shipping = 0
       this.creditCard = false
       this.displayForm = false;
       this.user[0].calle = "El pedido se tomara en mesa X"
+      this.shippingType = true;
 
     } else if (flag == 'rtienda') {
       this.creditCard = true
       this.displayForm = false;
-      this.user[0].calle = "El pedido se recogera en tienda"
+      this.user[0].calle = "El pedido se recogera en tienda";
+      this.shipping = 0;
+      this.shippingType = true;
     }
   }
 
