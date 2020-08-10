@@ -247,7 +247,8 @@ export class CartComponent implements OnInit, OnDestroy {
           'vatAmount': 0,
           'surchargeAmount': 0,
           'sended': false,
-          'userId': this.user[0].id
+          'userId': this.user[0].id,
+          'email': this.user[0].email
         };
         let headers = new HttpHeaders({
           'Content-Type': 'application/json',
