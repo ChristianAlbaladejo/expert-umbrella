@@ -26,7 +26,7 @@ export class CartComponent implements OnInit, OnDestroy {
   orderNotes = '';
   currentDate;
   creditCard = true;
-  chargesType = 'efectivo';
+  chargesType = 'tarjeta';
   shipping = 0;
   shippingType = true;
   constructor(
@@ -354,7 +354,7 @@ export class CartComponent implements OnInit, OnDestroy {
     } else {
       if (this.chargesType == 'tarjeta') {
         var handler = (<any>window).StripeCheckout.configure({
-          key: 'pk_test_51H9oTAATbeiMfoWZHrm3q0QCUtANPgu7FJ2x1CLcb5zCALiQ3yGdCq23LjRC4D6KGtzyDeeIUKu8hruQneZBBfHs00fbbXUCym',
+          key: 'pk_live_51HEUwyHEn9GtZEa1Lb2ayp85wwRo7xWnxVqiuDrm90tuRVEbnPQmhXIvPqntwzuiHxff6b6l9IGkccmYV3DHa9G600qsOsQplu',
           locale: 'auto',
           token: (token: any) => {
             // You can access the token ID with `token.id`.
