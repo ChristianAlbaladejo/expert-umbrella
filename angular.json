@@ -141,6 +141,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "panesandco"
+    }
+  },
+  "defaultProject": "panesandco",
+  "cli": {
+    "analytics": "dd85012c-2e4b-4e2f-ae51-d4770fed2df1"
+  }
 }

@@ -124,4 +124,8 @@ export class AppComponent {
       return false;
     }
   }
+
+  closeModal(){
+    document.getElementById("mySidebar").style.width = "0";
+  }
 }

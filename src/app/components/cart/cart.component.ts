@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CartComponent implements OnInit, OnDestroy {
   @ViewChild("content") modal: ElementRef;
+  @ViewChild("target") modalTarget: ElementRef;
   public products = [];
   public family = [];
   public user;
@@ -114,6 +115,14 @@ export class CartComponent implements OnInit, OnDestroy {
     });
   }
 
+  openModal() {
+    this.modalService.open(this.modalTarget, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -155,7 +164,6 @@ export class CartComponent implements OnInit, OnDestroy {
         $("#danger-alert").slideUp(500);
       });
     }
-
   }
 
   async testRequest() {
@@ -262,7 +270,7 @@ export class CartComponent implements OnInit, OnDestroy {
         });
         this.loading = false;
       }, error => {
-          this.open()
+        this.open()
         console.log(error)
         let orderlines = JSON.stringify(this.products)
         let re = /\"/gi;
@@ -374,42 +382,44 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   pay(amount) {
-
-    if (this.ifLogin()) {
-
+    if (this.total <= 15 && this.chargesType == 'tarjeta') {
+      this.openModal();
     } else {
-      if (this.chargesType == 'tarjeta') {
-        var handler = (<any>window).StripeCheckout.configure({
-          key: 'pk_live_51HEUwyHEn9GtZEa1Lb2ayp85wwRo7xWnxVqiuDrm90tuRVEbnPQmhXIvPqntwzuiHxff6b6l9IGkccmYV3DHa9G600qsOsQplu',
-          locale: 'auto',
-          token: (token: any) => {
-            // You can access the token ID with `token.id`.
-            // Get the token ID to your server-side code for use.
-            var body = {
-              'stripeToken': token.id,
-              'amount': amount * 100
-            };
-            let headers = new HttpHeaders({
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            });
-            this.http.post('https://panesandco.herokuapp.com/charge',
-              body, { headers: headers })
-              .subscribe(data => {
-                this.buy()
-              }, error => {
-                console.log(error)
-              });
-          }
-        });
-
-        handler.open({
-          name: 'Panes&Co Checkout',
-          description: '',
-          amount: amount * 100
-        });
+      if (this.ifLogin()) {
       } else {
-        this.buy()
+        if (this.chargesType == 'tarjeta') {
+          var handler = (<any>window).StripeCheckout.configure({
+            key: 'pk_live_51HEUwyHEn9GtZEa1Lb2ayp85wwRo7xWnxVqiuDrm90tuRVEbnPQmhXIvPqntwzuiHxff6b6l9IGkccmYV3DHa9G600qsOsQplu',
+            locale: 'auto',
+            token: (token: any) => {
+              // You can access the token ID with `token.id`.
+              // Get the token ID to your server-side code for use.
+              var body = {
+                'stripeToken': token.id,
+                'amount': amount * 100
+              };
+              let headers = new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              });
+              this.http.post('https://panesandco.herokuapp.com/charge',
+                body, { headers: headers })
+                .subscribe(data => {
+                  this.buy()
+                }, error => {
+                  console.log(error)
+                });
+            }
+          });
+
+          handler.open({
+            name: 'Panes&Co Checkout',
+            description: '',
+            amount: amount * 100
+          });
+        } else {
+          this.buy()
+        }
       }
     }
   }

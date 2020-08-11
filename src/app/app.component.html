@@ -45,13 +45,14 @@
 
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+  <a  [routerLink]="['/']" (click)="closeModal()">Inicio</a>
   <!-- <a href="#">About</a>
   <a href="#">Services</a> -->
-  <a href="../assets/carta.pdf">Menu</a>
-  <a *ngIf="!ifLogin()" [routerLink]="['/orders']">Mis pedidos</a>
+  <!-- <a href="../assets/carta.pdf">Menu</a> -->
+  <a *ngIf="!ifLogin()" [routerLink]="['/orders']" (click)="closeModal()">Mis pedidos</a>
   <!-- <a href="#">Clients</a> -->
-  <a *ngIf="ifLogin()" [routerLink]="['/login']" [state]="{ flag: 'false'}">Log-in</a>
-  <a href="" *ngIf="!ifLogin()" (click)="logout()">Log-out</a>
+  <a *ngIf="ifLogin()" [routerLink]="['/login']" [state]="{ flag: 'false'}" (click)="closeModal()">Log-in</a>
+  <a href="" *ngIf="!ifLogin()" (click)="logout()" (click)="closeModal()">Log-out</a>
 </div>
 
 <div class="row">
