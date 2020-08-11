@@ -7,12 +7,13 @@ import { FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BadgeService } from './services/badge.service';
 import { Subscription } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [ BadgeService],
+  providers: [BadgeService],
 })
 export class AppComponent {
   lang = new FormControl('en');
@@ -33,29 +34,29 @@ export class AppComponent {
     private solution: SolutionService,
     private google: GoogletranslateService,
     public _http: HttpClient
-  ) { }
+  ) {
+    this.number = 0;
+    console.log(this.number)
+  }
 
   ngOnInit() {
-    this.number = setInterval(() => {
+    setInterval(async () => {
       let identity = JSON.parse(localStorage.getItem('identity'));
-      let array= JSON.parse(localStorage.getItem('cart'));
-     this.number = array.length
-     this.identity = identity;
+      let array = JSON.parse(localStorage.getItem('cart'));
+      this.number = await array.length
+      this.identity = identity;
     }, 1000);
-    this.solution.getSolution().subscribe((res) => (this.data = res));
-    this.translateBtn = document.getElementById('translatebtn');
-    if (localStorage.getItem('cart')) {
-
+     if (localStorage.getItem('cart')) {
     } else {
       localStorage.setItem('cart', JSON.stringify({}));
-    }
+    } 
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
   goLogin() {
-      this._router.navigate(['/cart']);
+    this._router.navigate(['/cart']);
   }
 
   send() {
@@ -74,7 +75,7 @@ export class AppComponent {
           description: res.data.translations[1].translatedText,
           detail: res.data.translations[2].translatedText,
         };
-        
+
       },
       (err) => {
         console.log(err);
@@ -102,12 +103,12 @@ export class AppComponent {
 
   openNav() {
     document.getElementById("mySidebar").style.width = "250px";
-    
+
   }
 
   closeNav() {
     document.getElementById("mySidebar").style.width = "0";
-    
+
   }
 
   logout() {

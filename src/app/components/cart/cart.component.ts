@@ -1,10 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductsService } from '../../../app/services/products.service';
 import { UserService } from '../../../app/services/user.service';
 import { User } from '../../../app/models/user';
 import * as $ from "jquery";
+import * as bootstrap from 'bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule } from '@angular/forms';
 
@@ -15,6 +17,7 @@ import { FormsModule } from '@angular/forms';
   providers: [ProductsService, UserService],
 })
 export class CartComponent implements OnInit, OnDestroy {
+  @ViewChild("content") modal: ElementRef;
   public products = [];
   public family = [];
   public user;
@@ -29,11 +32,14 @@ export class CartComponent implements OnInit, OnDestroy {
   chargesType = 'tarjeta';
   shipping = 0;
   shippingType = true;
+
+  closeResult = '';
   constructor(
     private _productsService: ProductsService,
     private _route: ActivatedRoute,
     private http: HttpClient,
     private _userService: UserService,
+    private modalService: NgbModal,
     private _router: Router) { }
 
   async ngOnInit(): Promise<void> {
@@ -92,12 +98,30 @@ export class CartComponent implements OnInit, OnDestroy {
       this.total = perProduct + this.total;
     }
     if (!this.shippingType) {
-    if (this.total > 30) {
-      this.shipping = 0
-    } else {
-      this.shipping = 5
+      if (this.total > 30) {
+        this.shipping = 0
+      } else {
+        this.shipping = 5
+      }
     }
   }
+
+  open() {
+    this.modalService.open(this.modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
   deleteProduct(p) {
@@ -131,6 +155,7 @@ export class CartComponent implements OnInit, OnDestroy {
         $("#danger-alert").slideUp(500);
       });
     }
+
   }
 
   async testRequest() {
@@ -237,6 +262,7 @@ export class CartComponent implements OnInit, OnDestroy {
         });
         this.loading = false;
       }, error => {
+          this.open()
         console.log(error)
         let orderlines = JSON.stringify(this.products)
         let re = /\"/gi;
