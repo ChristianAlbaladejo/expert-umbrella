@@ -228,7 +228,8 @@ export class CartComponent implements OnInit, OnDestroy {
           'surchargeAmount': 0,
           'sended': true,
           'userId': this.user[0].id,
-          'email': this.user[0].email
+          'email': this.user[0].email,
+          'deliveryDate': this.fechaRecogida
         };
         let headers = new HttpHeaders({
           'Content-Type': 'application/json',
@@ -285,7 +286,8 @@ export class CartComponent implements OnInit, OnDestroy {
           'surchargeAmount': 0,
           'sended': false,
           'userId': this.user[0].id,
-          'email': this.user[0].email
+          'email': this.user[0].email,
+          'deliveryDate': this.fechaRecogida
         };
         let headers = new HttpHeaders({
           'Content-Type': 'application/json',
