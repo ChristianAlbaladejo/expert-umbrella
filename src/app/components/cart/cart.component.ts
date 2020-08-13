@@ -229,7 +229,7 @@ export class CartComponent implements OnInit, OnDestroy {
           'sended': true,
           'userId': this.user[0].id,
           'email': this.user[0].email,
-          'deliveryDate': this.fechaRecogida
+          'deliveryDate': deliveryDate.toISOString()
         };
         let headers = new HttpHeaders({
           'Content-Type': 'application/json',
@@ -287,7 +287,7 @@ export class CartComponent implements OnInit, OnDestroy {
           'sended': false,
           'userId': this.user[0].id,
           'email': this.user[0].email,
-          'deliveryDate': this.fechaRecogida
+          'deliveryDate': deliveryDate.toISOString()
         };
         let headers = new HttpHeaders({
           'Content-Type': 'application/json',
