@@ -9,10 +9,9 @@
 
         <!-- Login Form -->
         <form #registerForm="ngForm" (ngSubmit)="register()">
-            <input type="email" #email="ngModel" id="email" class="fadeIn second" name="login" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="user.email" />
-            <span *ngIf="!email.valid && email.touched">
-               <br> El correo no es correcto!!
-            </span>
+            <input [(ngModel)]="user.email" #email="ngModel" placeholder="Email" name="email" type="email" class="fadeIn second"
+                required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+            <span *ngIf="!email.valid && email.touched"> <br> El email es incorrecto</span>
             <input type="text" id="nombre" class="fadeIn second" name="login" placeholder="Nombre"[(ngModel)]="user.name" required />
             <input type="text" id="apellidos" class="fadeIn second" name="login" placeholder="Apellidos" [(ngModel)]="user.lastname" required />
             <input type="text" id="cif" class="fadeIn second" name="login" placeholder="NIF" [(ngModel)]="user.CIF" required />

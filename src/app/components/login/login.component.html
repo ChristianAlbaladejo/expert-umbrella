@@ -9,11 +9,14 @@
 
         <!-- Login Form -->
         <form #loginForm="ngForm" (ngSubmit)="login()">
-            <input type="email" #email="ngModel" id="email" [(ngModel)]="user.email" class="fadeIn second" name="login"
+            <!-- <input type="email" #email="ngModel" id="email" [(ngModel)]="user.email" class="fadeIn second" name="login"
                 placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-            <span *ngIf="!email.valid && email.touched">
+            <span *ngIf="!email.valid">
                 <br> El email no es correcto
-            </span>
+            </span> -->
+            <input [(ngModel)]="user.email" #email="ngModel" placeholder="Email" name="email" type="email"
+                  class="fadeIn second" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+            <span *ngIf="!email.valid && email.touched"> <br> El email es incorrecto</span>
             <input type="password" [(ngModel)]="user.password" id="pass" class="fadeIn third" name="login"
                 placeholder="Contraseña" required />
             <input type="submit" class="fadeIn fourth" value="Log In" [disabled]="!loginForm.form.valid" />

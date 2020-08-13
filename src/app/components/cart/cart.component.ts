@@ -303,6 +303,7 @@ export class CartComponent implements OnInit, OnDestroy {
         this.loading = false;
       });
   }
+  
   async getFamilyName() {
     this._productsService.getFamilies().subscribe(
       (response) => {
