@@ -9,21 +9,34 @@
 
         <!-- Login Form -->
         <form #registerForm="ngForm" (ngSubmit)="register()">
-            <input [(ngModel)]="user.email" #email="ngModel" placeholder="Email" name="email" type="email" class="fadeIn second"
-                required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+            <input [(ngModel)]="user.email" #email="ngModel" placeholder="Email" name="email" type="email"
+                class="fadeIn second" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
             <span *ngIf="!email.valid && email.touched"> <br> El email es incorrecto</span>
-            <input type="text" id="nombre" class="fadeIn second" name="login" placeholder="Nombre"[(ngModel)]="user.name" required />
-            <input type="text" id="apellidos" class="fadeIn second" name="login" placeholder="Apellidos" [(ngModel)]="user.lastname" required />
-            <input type="text" id="cif" class="fadeIn second" name="login" placeholder="NIF" [(ngModel)]="user.CIF" required />
-            <input type="text" id="calle" class="fadeIn second" name="login" placeholder="Calle" [(ngModel)]="user.calle" required />
-            <input type="text" id="teléfono" class="fadeIn second" name="login" placeholder="Telefono" [(ngModel)]="user.telefono" required />
-            <input type="text" id="cp" class="fadeIn second" name="login" placeholder="CP" [(ngModel)]="user.CP" required />
-            <input type="text" id="poblacion" class="fadeIn second" name="login" placeholder="Población" [(ngModel)]="user.poblacion" required />
-            <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña" [(ngModel)]="user.password" required />
-            <input type="password" id="password2" class="fadeIn third" name="login" placeholder="Repite la contraseña" [(ngModel)]="password2" required />
-            <input type="submit" class="fadeIn fourth" value="Registrar" [disabled]="!registerForm.form.valid"  />
-
-            <input type="button" class="fadeIn fourth" value="Login" [routerLink]="['/login']" [state]="{ flag: 'false'}" />
+            <input type="text" id="nombre" class="fadeIn second" name="login" placeholder="Nombre"
+                [(ngModel)]="user.name" required />
+            <input type="text" id="apellidos" class="fadeIn second" name="login" placeholder="Apellidos"
+                [(ngModel)]="user.lastname" required />
+            <input type="text" id="cif" class="fadeIn second" name="login" placeholder="NIF" [(ngModel)]="user.CIF"
+                required />
+            <input type="text" id="calle" class="fadeIn second" name="login" placeholder="Calle"
+                [(ngModel)]="user.calle" required />
+            <input type="text" id="teléfono" class="fadeIn second" name="login" placeholder="Telefono"
+                [(ngModel)]="user.telefono" required />
+            <input type="text" id="cp" class="fadeIn second" name="login" placeholder="CP" [(ngModel)]="user.CP"
+                required />
+            <input type="text" id="poblacion" class="fadeIn second" name="login" placeholder="Población"
+                [(ngModel)]="user.poblacion" required />
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña"
+                [(ngModel)]="user.password" required />
+            <input type="password" id="password2" class="fadeIn third" name="login" placeholder="Repite la contraseña"
+                [(ngModel)]="password2" required />
+            <div class="form-check">
+                <input type="checkbox" (change)="checked($event)" class="form-check-input" [(ngModel)]="mailing" id="mailing" class="fadeIn third">
+                <label class="form-check-label" for="mailing" class="fadeIn third">¿Quieres recibir nuestros emails?</label>
+            </div>
+            <input type="submit" class="fadeIn fourth" value="Registrar" [disabled]="!registerForm.form.valid" />
+            <input type="button" class="fadeIn fourth" value="Login" [routerLink]="['/login']"
+                [state]="{ flag: 'false'}" />
         </form>
     </div>
 </div>
