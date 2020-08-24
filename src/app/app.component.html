@@ -19,7 +19,7 @@
  -->
 
   <!-- <button id="translatebtn" (click)="send()">Translate</button> -->
-  <div class="nav navbar-nav ml-auto">
+  <div class="nav navbar-nav ">
     <div (click)="goLogin()" matBadge="8">
       <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart icon" fill="#5dbcd2"
         xmlns="http://www.w3.org/2000/svg">
@@ -28,6 +28,9 @@
       </svg>
       <span *ngIf="number!=0" class='badge badge-warning' id='lblCartCount'> {{number}} </span>
     </div>
+   
+
+
 
 
     <!-- <div  (click)="recharge()">
@@ -40,7 +43,8 @@
     </svg>
   </div> -->
 
-  </div>
+  </div> &nbsp;
+ <a href="tel:600123456"> <i class="fas fa-phone" ></i></a>
 </nav>
 
 <div id="mySidebar" class="sidebar">
@@ -52,12 +56,14 @@
   <a *ngIf="!ifLogin()" [routerLink]="['/orders']" (click)="closeModal()">Mis pedidos</a>
   <!-- <a href="#">Clients</a> -->
   <a *ngIf="ifLogin()" [routerLink]="['/login']" [state]="{ flag: 'false'}" (click)="closeModal()">Log-in</a>
+  <a [routerLink]="['/favorites']"  (click)="closeModal()">Favoritos</a>
   <a href="" *ngIf="!ifLogin()" (click)="logout()" (click)="closeModal()">Log-out</a>
 </div>
 
 <div class="row">
   <div class="col" id="google_translate_element"></div>
   <!-- <a class="fas fa-utensils col text-right menu" href="../assets/carta.pdf"  id="menu"></a> -->
+  <div class="col" style="text-align: right; zoom: 2" [routerLink]="['/favorites']" ><i class="fas fa-heart"></i></div>
 </div>
 
 <!-- <footer (click)="goLogin()">

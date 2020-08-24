@@ -30,10 +30,10 @@
                 [(ngModel)]="user.password" required />
             <input type="password" id="password2" class="fadeIn third" name="login" placeholder="Repite la contraseña"
                 [(ngModel)]="password2" required />
-            <div class="form-check">
+           <!--  <div class="form-check">
                 <input type="checkbox" (change)="checked($event)" class="form-check-input" [(ngModel)]="mailing" id="mailing" class="fadeIn third">
                 <label class="form-check-label" for="mailing" class="fadeIn third">¿Quieres recibir nuestros emails?</label>
-            </div>
+            </div> -->
             <input type="submit" class="fadeIn fourth" value="Registrar" [disabled]="!registerForm.form.valid" />
             <input type="button" class="fadeIn fourth" value="Login" [routerLink]="['/login']"
                 [state]="{ flag: 'false'}" />

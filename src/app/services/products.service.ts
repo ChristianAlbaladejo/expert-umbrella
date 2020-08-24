@@ -9,14 +9,14 @@ export class ProductsService {
   public stats;
 
   constructor(public _http: HttpClient) {
-    this.url = 'https://panesandco.herokuapp.com'; 
-  /*   this.url = 'http://localhost:3000'; */
+    this.url = 'https://panesandco.herokuapp.com';
+    /*   this.url = 'http://localhost:3000'; */
   }
 
   getFamilies(): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=UTF-8"',
-      
+
     });
 
     return this._http.get(this.url + '/', { headers: headers });
@@ -35,7 +35,7 @@ export class ProductsService {
       'Content-Type': 'application/json; charset=UTF-8"',
     });
 
-    return this._http.get(this.url + '/products/'+id, { headers: headers });
+    return this._http.get(this.url + '/products/' + id, { headers: headers });
   }
 
   getProductById(id): Observable<any> {
@@ -51,7 +51,7 @@ export class ProductsService {
       'Content-Type': 'application/json; charset=UTF-8"',
     });
 
-    return this._http.get(this.url + '/familiName/'+id, { headers: headers });
+    return this._http.get(this.url + '/familiName/' + id, { headers: headers });
   }
 
   lastOrder(): Observable<any> {
@@ -67,15 +67,15 @@ export class ProductsService {
       'Content-Type': 'application/json; charset=UTF-8"',
     });
 
-    return this._http.get(this.url + '/filter/'+ f,{ headers: headers });
+    return this._http.get(this.url + '/filter/' + f, { headers: headers });
   }
 
-  filterByName(f,id): Observable<any> {
+  filterByName(f, id): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=UTF-8"',
     });
 
-    return this._http.get(this.url + '/filterByName/' + f+'/'+id, { headers: headers });
+    return this._http.get(this.url + '/filterByName/' + f + '/' + id, { headers: headers });
   }
 
   getSalesOrders(id): Observable<any> {
@@ -85,5 +85,45 @@ export class ProductsService {
     });
 
     return this._http.get(this.url + '/salesorders/' + id, { headers: headers });
+  }
+
+  checkFav(productId, userId): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8"',
+      'Authorization': localStorage.getItem("token")
+    });
+
+    return this._http.get(this.url + '/checkFavorite/' + productId + '/' + userId, { headers: headers });
+  }
+
+  deleteFav(productId, userId): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8"',
+      'Authorization': localStorage.getItem("token")
+    });
+
+    return this._http.delete(this.url + '/removeFavorite/' + productId + '/' + userId ,{ headers: headers });
+  }
+
+  addFav(productId, userId): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8"',
+      'Authorization': localStorage.getItem("token")
+    });
+
+    let body = {
+      "productId": productId,
+      "userId": userId
+    }
+    return this._http.post(this.url + '/addFavorite/', body, { headers: headers });
+  }
+
+  getFav(userId): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8"',
+      'Authorization': localStorage.getItem("token")
+    });
+
+    return this._http.get(this.url + '/getFavorites/' + userId , { headers: headers });
   }
 }

@@ -1,8 +1,8 @@
-<div class="form-group has-search">
+<!-- <div class="form-group has-search">
     <span class="fa fa-search form-control-feedback"></span>
     <input [(ngModel)]="search" (keyup)="filter()" type="text" class="form-control"
         placeholder="Busca por categoría, producto o código..." />
-</div>
+</div> -->
 <div class=”row”>
     <div class="column" *ngFor="let p of product">
         <div class="card">
@@ -14,11 +14,10 @@
                 <h1 class="card-text">{{p.costPrice }} €
                 </h1>
             </div> -->
-            <div class="row" *ngIf="productLike">
-                <i class="far fa-heart fav" *ngIf="!checkFav(p)" (click)="addFav(p)"></i>
-                <i class="fas fa-heart fav-colored"  *ngIf="checkFav(p)" (click)="deleteFav(p)"></i>
-
-                <img class="img-product" style="background-image: url(../../../assets/{{p.PLU}}.jpg), url(../../../assets/mug.jpg);">
+            <div class="row">
+                <i class="far fa-heart fav"></i>
+                <img class="img-product"
+                    style="background-image: url(../../../assets/{{p.PLU}}.jpg), url(../../../assets/mug.jpg);">
                 <div class="text col">
                     <h6 class="card-title">{{p.name | titlecase}}</h6>
                     <h4 class="price">{{p.costPrice }} €</h4>

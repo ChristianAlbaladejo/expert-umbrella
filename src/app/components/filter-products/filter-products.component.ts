@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductsService } from '../../../app/services/products.service';
 import { BadgeService } from '../../../app/services/badge.service';
 import { Product } from '../../../app/models/product';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as $ from "jquery";
 
 @Component({
@@ -17,6 +17,8 @@ export class FilterProductsComponent implements OnInit {
   public product: Product[];
   public cart = [];
   public count: number = 0;
+  public user;
+  public productLike;
   search = '';
 
   constructor(
@@ -27,11 +29,12 @@ export class FilterProductsComponent implements OnInit {
     private _productsService: ProductsService) {
     this.test = this._router.getCurrentNavigation().extras.state;
     /* this.product = new Product('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''); */
-    
+
   }
 
   ngOnInit(): void {
-    
+    this.user = localStorage.getItem("identity")
+    this.user = JSON.parse(this.user);
     this.loadProducts();
     let array = localStorage.getItem('cart');
     array = JSON.parse(array);
@@ -41,7 +44,7 @@ export class FilterProductsComponent implements OnInit {
     $(document).ready(function () {
       $("#success-alert").hide();
     })
-    
+
   }
 
   loadProducts() {
@@ -59,6 +62,18 @@ export class FilterProductsComponent implements OnInit {
 
         }
       );
+
+      this._productsService.getFav(this.user[0].id).subscribe(
+        (response) => {
+          this.productLike = response;
+          this.productLike.forEach(element => {
+            element['name'] = decodeURIComponent(escape(element['name']));
+          });
+          console.log(this.productLike)
+        }
+      ), error => {
+        console.log(error);
+      }
     }
     $('#success-alert').css('color', 'red');
 
@@ -120,4 +135,45 @@ export class FilterProductsComponent implements OnInit {
     }
   }
 
+  checkFav(p) {
+    for (let x = 0; x < this.productLike.length; x++) {
+      if (p.id == this.productLike[x].productId) {
+        return true;
+      }
+    }
+    return false
+  }
+
+  addFav(p) {
+    this.productLike.push({ "productId": p.id, "userId": this.user[0].id })
+    var body = {
+      "productId": p.id,
+      "userId": this.user[0].id
+    };
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token")
+    });
+    this.http
+      .post('https://panesandco.herokuapp.com/addFavorite/',
+        body, { headers: headers })
+      .subscribe(data => {
+      }, error => {
+        console.log(error);
+      }
+      );
+  }
+
+  deleteFav(p) {
+    for (let i = 0; i < this.productLike.length; i++) {
+      if (p.id == this.productLike[i].productId) {
+        this.productLike.splice(i, 1)
+      }
+    }
+    this._productsService.deleteFav(p.id, this.user[0].id).subscribe((response) => {
+    }, error => {
+      console.log(error);
+    });
+    
+  }
 }
