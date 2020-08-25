@@ -18,16 +18,19 @@ import { TranslateService } from '@ngx-translate/core';
 export class ProductsComponent implements OnInit {
   test;
   public product: Product;
-  public families = [] ;
+  public families = [];
   public products: Product[];
   public cart = [];
   public count: number = 0;
+  public productLike;
+  public user;
   selectedLanguage = 'es';
   search = '';
 
   constructor(
     private _productsService: ProductsService,
     private _userService: UserService,
+    private http: HttpClient,
     private _route: ActivatedRoute,
     private _router: Router,
     public translate: TranslateService
@@ -39,6 +42,8 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = localStorage.getItem("identity")
+    this.user = JSON.parse(this.user);
     $(document).ready(function () {
       $("#success-alert").hide();
     })
@@ -49,7 +54,7 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  ngAfterViewInit(): void{
+  ngAfterViewInit(): void {
     this._productsService.getFamilies().subscribe(
       (response) => {
         for (let i = 0; i < response.length; i++) {
@@ -107,6 +112,18 @@ export class ProductsComponent implements OnInit {
       (error) => {
       }
     );
+
+    this._productsService.getFav(this.user[0].id).subscribe(
+      (response) => {
+        this.productLike = response;
+        this.productLike.forEach(element => {
+          element['name'] = decodeURIComponent(escape(element['name']));
+        });
+        console.log(this.productLike)
+      }
+    ), error => {
+      console.log(error);
+    }
   }
 
   //products
@@ -144,6 +161,47 @@ export class ProductsComponent implements OnInit {
     }
     $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
       $("#success-alert").slideUp(500);
+    });
+  }
+
+  checkFav(p) {
+    for (let x = 0; x < this.productLike.length; x++) {
+      if (p.id == this.productLike[x].productId) {
+        return true;
+      }
+    }
+    return false
+  }
+
+  addFav(p) {
+    this.productLike.push({ "productId": p.id, "userId": this.user[0].id })
+    var body = {
+      "productId": p.id,
+      "userId": this.user[0].id
+    };
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token")
+    });
+    this.http
+      .post('https://panesandco.herokuapp.com/addFavorite/',
+        body, { headers: headers })
+      .subscribe(data => {
+      }, error => {
+        console.log(error);
+      }
+      );
+  }
+
+  deleteFav(p) {
+    for (let i = 0; i < this.productLike.length; i++) {
+      if (p.id == this.productLike[i].productId) {
+        this.productLike.splice(i, 1)
+      }
+    }
+    this._productsService.deleteFav(p.id, this.user[0].id).subscribe((response) => {
+    }, error => {
+      console.log(error);
     });
   }
 }

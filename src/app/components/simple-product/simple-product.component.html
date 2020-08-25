@@ -21,6 +21,10 @@
             </div>
 
             <div class="col-lg-6">
+                <div *ngIf="productLike">
+                    <i class="far fa-heart fav" *ngIf="!checkFav(product)" (click)="addFav(product)"></i>
+                    <i class="fas fa-heart fav-colored" *ngIf="checkFav(product)" (click)="deleteFav(product)"></i>
+                </div>
                 <form class="form-horizontal" method="post" enctype="multipart/form-data" name="buy">
                     <div class="row">
                         <div class="col">

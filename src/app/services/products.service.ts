@@ -102,7 +102,7 @@ export class ProductsService {
       'Authorization': localStorage.getItem("token")
     });
 
-    return this._http.delete(this.url + '/removeFavorite/' + productId + '/' + userId ,{ headers: headers });
+    return this._http.delete(this.url + '/removeFavorite/' + productId + '/' + userId, { headers: headers });
   }
 
   addFav(productId, userId): Observable<any> {
@@ -124,6 +124,6 @@ export class ProductsService {
       'Authorization': localStorage.getItem("token")
     });
 
-    return this._http.get(this.url + '/getFavorites/' + userId , { headers: headers });
+    return this._http.get(this.url + '/getFavorites/' + userId, { headers: headers });
   }
 }

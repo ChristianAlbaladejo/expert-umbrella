@@ -104,8 +104,9 @@ body {
 .column {
   float: left;
   width: 33%;
-  padding: 0 5px;
+  padding: 0 10px;
 }
+
 .card-title {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -136,10 +137,9 @@ body {
   padding: 16px;
   text-align: center;
   background-color: #f1f1f1;
-  margin-bottom: 1em;
   height: 5em;
+  margin-bottom: -0.5em;
 }
-
 //input number
 
 input[type="number"] {
@@ -252,3 +252,15 @@ footer {
 .mb-5, .my-5 {
     margin-bottom: 1rem!important;
 }
+
+.fav{
+  zoom: 2;
+  margin-right: 0.5em;
+}
+
+.fav-colored{
+  zoom: 2;
+  margin-right: 0.5em;
+  color: red;
+}
+

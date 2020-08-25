@@ -64,15 +64,18 @@
                         
                     </h1> 
                     </div>-->
-                <div class="row">
-                    <img class="img-product " style="background-image: url(../../../assets/{{p.PLU}}.jpg), url(../../../assets/mug.jpg);" >
+                <div class="row" *ngIf="productLike">
+                    <i class="far fa-heart fav" *ngIf="!checkFav(p)" (click)="addFav(p)"></i>
+                    <i class="fas fa-heart fav-colored" *ngIf="checkFav(p)" (click)="deleteFav(p)"></i>
+
+                    <img class="img-product"
+                        style="background-image: url(../../../assets/{{p.PLU}}.jpg), url(../../../assets/mug.jpg);">
                     <div class="text col">
-                        <h6 class="card-title">{{p.name}}</h6>
+                        <h6 class="card-title">{{p.name | titlecase}}</h6>
                         <h4 class="price">{{p.costPrice }} €</h4>
                     </div>
                     <button type="button " class="btn btn-primary boton" [routerLink]="['/product']"
-                        [state]="{ id: p.id}">Ver</button>
-
+                        [state]="{ id: p.id}">Ver </button>
                 </div>
                 <!-- <div class="row">
                     <div class="col-8">

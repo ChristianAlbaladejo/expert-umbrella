@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../app/services/products.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as $ from "jquery";
 @Component({
   selector: 'app-favorites',
@@ -12,9 +13,8 @@ export class FavoritesComponent implements OnInit {
   public product = [];
   public cart = [];
   public user;
-  constructor(public _productsService: ProductsService) {
-   
-  }
+  public productLike = []
+  constructor(public _productsService: ProductsService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.user = localStorage.getItem("identity")
@@ -25,7 +25,7 @@ export class FavoritesComponent implements OnInit {
     setTimeout(() => {
       this.load();
     },
-    500);
+      500);
   }
 
   load() {
@@ -40,10 +40,62 @@ export class FavoritesComponent implements OnInit {
     ), error => {
       console.log(error);
     }
+
+    this._productsService.getFav(this.user[0].id).subscribe(
+      (response) => {
+        this.productLike = response;
+        this.productLike.forEach(element => {
+          element['name'] = decodeURIComponent(escape(element['name']));
+        });
+      }
+    ), error => {
+      console.log(error);
+    }
     let array = localStorage.getItem('cart');
     array = JSON.parse(array);
     for (let i = 0; i < array.length; i++) {
       this.cart.push(array[i]);
     }
+  }
+
+  checkFav(p) {
+    for (let x = 0; x < this.productLike.length; x++) {
+      if (p.id == this.productLike[x].productId) {
+        return true;
+      }
+    }
+    return false
+  }
+
+  addFav(p) {
+    this.productLike.push({ "productId": p.id, "userId": this.user[0].id })
+    var body = {
+      "productId": p.id,
+      "userId": this.user[0].id
+    };
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("token")
+    });
+    this.http
+      .post('https://panesandco.herokuapp.com/addFavorite/',
+        body, { headers: headers })
+      .subscribe(data => {
+      }, error => {
+        console.log(error);
+      }
+      );
+  }
+
+  deleteFav(p) {
+    for (let i = 0; i < this.productLike.length; i++) {
+      if (p.id == this.productLike[i].productId) {
+        this.productLike.splice(i, 1)
+      }
+    }
+    this._productsService.deleteFav(p.id, this.user[0].id).subscribe((response) => {
+    }, error => {
+      console.log(error);
+    });
   }
 }

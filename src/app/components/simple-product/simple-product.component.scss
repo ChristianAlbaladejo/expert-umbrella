@@ -146,11 +146,23 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-top: -1em;
   }
 }
+
 a {
   zoom: 1.8;
 }
 
+.fav{
+  zoom: 2;
+  margin-top: 0.2em;
+  margin-right: 0.5em;
+}
 
+.fav-colored{
+  zoom: 2;
+  margin-top: 0.2em;
+  margin-right: 0.5em;
+  color: red;
+}
 
 
 

@@ -174,6 +174,5 @@ export class FilterProductsComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-    
   }
 }
