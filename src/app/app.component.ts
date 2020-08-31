@@ -18,8 +18,8 @@ export class AppComponent {
     detail: '',
   };
   number = 0;
+  location;
   subscription: Subscription;
-  private translateBtn: any;
   identity;
 
   constructor(
@@ -28,7 +28,10 @@ export class AppComponent {
     public _http: HttpClient
   ) {
     this.number = 0;
-    console.log(this.number)
+    setInterval(() => {
+      this.location = this._router.url;
+    }, 900);
+    
   }
 
   ngOnInit() {

@@ -21,6 +21,8 @@ export class TablesComponent implements OnInit {
       'Access-Control-Allow-Origin': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
       'Connection':'keep-alive',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache'
         });
     this.http.get('http://192.168.200.227:5000/tables', { headers: headers }).subscribe(response => {
       console.log(response[0])
@@ -29,5 +31,4 @@ export class TablesComponent implements OnInit {
       console.log(error);
     });
   }
-
 }
