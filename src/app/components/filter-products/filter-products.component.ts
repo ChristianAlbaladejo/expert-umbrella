@@ -1,7 +1,6 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductsService } from '../../../app/services/products.service';
-import { BadgeService } from '../../../app/services/badge.service';
 import { Product } from '../../../app/models/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as $ from "jquery";
@@ -10,7 +9,7 @@ import * as $ from "jquery";
   selector: 'app-filter-products',
   templateUrl: './filter-products.component.html',
   styleUrls: ['./filter-products.component.scss'],
-  providers: [ProductsService, BadgeService],
+  providers: [ProductsService],
 })
 export class FilterProductsComponent implements OnInit {
   test;
@@ -25,7 +24,6 @@ export class FilterProductsComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private http: HttpClient,
-    private _badge: BadgeService,
     private _productsService: ProductsService) {
     this.test = this._router.getCurrentNavigation().extras.state;
     /* this.product = new Product('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''); */
@@ -86,10 +84,6 @@ export class FilterProductsComponent implements OnInit {
 
   quitQuantity(p) {
     p.quantity -= 1;
-  }
-
-  sendNumber() {
-    this._badge.sendNumber(this.increament());
   }
 
   increament() {

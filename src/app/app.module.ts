@@ -21,6 +21,7 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 import { MenuComponent } from './components/menu/menu.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { TablesComponent } from './components/tables/tables.component';
 
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -39,6 +40,7 @@ export function httpTranslateLoader(http: HttpClient) {
     DateAgoPipe,
     MenuComponent,
     FavoritesComponent,
+    TablesComponent,
     
   ],
   imports: [

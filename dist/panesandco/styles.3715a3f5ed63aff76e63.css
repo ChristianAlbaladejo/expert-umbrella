@@ -3,7 +3,7 @@
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */html{-webkit-tap-highlight-color:rgba(0,0,0,0)}.custom-range:focus{outline:none}body,html{height:100%}body{font-family:Roboto,Helvetica Neue,sans-serif}.goog-logo-link{display:none!important}.goog-te-gadget{margin:1em 1em -1em;color:transparent!important}
+ */html{-webkit-tap-highlight-color:rgba(0,0,0,0)}.custom-range:focus{outline:none}body,html{height:100%;overflow-x:hidden!important}body{font-family:Roboto,Helvetica Neue,sans-serif}.goog-logo-link{display:none!important}.goog-te-gadget{margin:1em 1em -1em;color:transparent!important}
 
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)

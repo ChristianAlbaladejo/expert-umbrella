@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { SolutionService } from './services/solution.service';
 import { Solution, GoogleObj } from './models/solution';
-import { GoogletranslateService } from './services/googletranslate.service';
 import { FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BadgeService } from './services/badge.service';
 import { Subscription } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [BadgeService],
 })
 export class AppComponent {
   lang = new FormControl('en');
@@ -30,9 +25,6 @@ export class AppComponent {
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _badge: BadgeService,
-    private solution: SolutionService,
-    private google: GoogletranslateService,
     public _http: HttpClient
   ) {
     this.number = 0;
@@ -57,30 +49,6 @@ export class AppComponent {
 
   goLogin() {
     this._router.navigate(['/cart']);
-  }
-
-  send() {
-    const googleObj: GoogleObj = {
-      q: [this.data.title, this.data.description, this.data.detail],
-      target: this.lang.value,
-    };
-
-    this.translateBtn.disabled = true;
-
-    this.google.translate(googleObj).subscribe(
-      (res: any) => {
-        this.translateBtn.disabled = false;
-        this.data = {
-          title: res.data.translations[0].translatedText,
-          description: res.data.translations[1].translatedText,
-          detail: res.data.translations[2].translatedText,
-        };
-
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
   }
 
   recharge() {

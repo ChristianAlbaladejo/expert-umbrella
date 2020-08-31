@@ -57,6 +57,7 @@
   <!-- <a href="#">Clients</a> -->
   <a *ngIf="ifLogin()" [routerLink]="['/login']" [state]="{ flag: 'false'}" (click)="closeModal()">Log-in</a>
   <a [routerLink]="['/favorites']"  (click)="closeModal()">Favoritos</a>
+  <a [routerLink]="['/tables']" (click)="closeModal()">Ver mesa</a>
   <a href="" *ngIf="!ifLogin()" (click)="logout()" (click)="closeModal()">Log-out</a>
 </div>
 

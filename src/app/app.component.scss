@@ -1,11 +1,19 @@
-.icon{
-fill:  '#75c6b2';
+html,
+body {
+   overflow-x: hidden !important; //horizontal
+    overflow-y: scroll !important; //vertical
 }
 
-.menu{
+nav{
+padding-left: 10px;
+}
+.icon {
+  fill: "#75c6b2";
+}
+
+.menu {
   zoom: 1.5;
   margin: 0.5em;
-  
 }
 
 .sidebar {
@@ -56,16 +64,19 @@ fill:  '#75c6b2';
 }
 
 #main {
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 16px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
 }
-
 
 .badge {
   padding-left: 9px;
@@ -80,14 +91,13 @@ fill:  '#75c6b2';
   background-color: #c67605;
 }
 #lblCartCount {
-    font-size: 12px;
-    background: #ff0000;
-    color: #fff;
-    padding: 0 5px;
-    vertical-align: top;
-    margin-left: -10px; 
+  font-size: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
 }
-
 
 .container-f {
   position: fixed;
@@ -97,7 +107,7 @@ fill:  '#75c6b2';
   background-color: #cb9f3e;
   color: #ffffff;
   display: inline-block;
-   z-index: 1;
+  z-index: 1;
 }
 
 .user-login {

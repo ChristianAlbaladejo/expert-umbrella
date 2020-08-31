@@ -10,6 +10,7 @@ import { SimpleProductComponent } from './components/simple-product/simple-produ
 import { OrdersComponent } from './components/orders/orders.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { TablesComponent } from './components/tables/tables.component';
 const approutes: Routes = [
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: 'products', component: ProductsComponent },
@@ -20,7 +21,8 @@ const approutes: Routes = [
   { path: 'product', component: SimpleProductComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'favorites', component: FavoritesComponent}
+  { path: 'favorites', component: FavoritesComponent},
+  { path: 'tables', component: TablesComponent }
 ];
 
 @NgModule({
