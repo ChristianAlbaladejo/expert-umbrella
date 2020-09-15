@@ -33,6 +33,7 @@ export class FilterProductsComponent implements OnInit {
   ngOnInit(): void {
     this.user = localStorage.getItem("identity")
     this.user = JSON.parse(this.user);
+    console.log(this.user)
     this.loadProducts();
     let array = localStorage.getItem('cart');
     array = JSON.parse(array);
@@ -60,17 +61,18 @@ export class FilterProductsComponent implements OnInit {
 
         }
       );
-
-      this._productsService.getFav(this.user[0].id).subscribe(
-        (response) => {
-          this.productLike = response;
-          this.productLike.forEach(element => {
-            element['name'] = decodeURIComponent(escape(element['name']));
-          });
-          console.log(this.productLike)
+      if (this.user != null) {
+        this._productsService.getFav(this.user[0].id).subscribe(
+          (response) => {
+            this.productLike = response;
+            this.productLike.forEach(element => {
+              element['name'] = decodeURIComponent(escape(element['name']));
+            });
+            console.log(this.productLike)
+          }
+        ), error => {
+          console.log(error);
         }
-      ), error => {
-        console.log(error);
       }
     }
     $('#success-alert').css('color', 'red');
@@ -139,6 +141,7 @@ export class FilterProductsComponent implements OnInit {
   }
 
   addFav(p) {
+    if (this.user) {
     this.productLike.push({ "productId": p.id, "userId": this.user[0].id })
     var body = {
       "productId": p.id,
@@ -156,6 +159,7 @@ export class FilterProductsComponent implements OnInit {
         console.log(error);
       }
       );
+    }
   }
 
   deleteFav(p) {
