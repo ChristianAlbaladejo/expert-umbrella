@@ -26,7 +26,7 @@ export class TablesComponent implements OnInit {
         });
     this.http.get('http://192.168.1.109:5000/tables', { headers: headers }).subscribe(response => {
       console.log(response[0])
-      this.tables = response[0];
+      this.tables = parseInt(response[0]);
     }, error => {
       console.log(error);
     });
