@@ -25,8 +25,8 @@ export class TablesComponent implements OnInit {
       'Pragma': 'no-cache'
         });
     this.http.get('http://192.168.1.109:5000/tables', { headers: headers }).subscribe(response => {
-      console.log(response[0])
-      this.tables = parseInt(response[0]);
+      console.log(response)
+      this.tables = response;
     }, error => {
       console.log(error);
     });
