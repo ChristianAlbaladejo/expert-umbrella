@@ -35,6 +35,18 @@ export class CartComponent implements OnInit, OnDestroy {
   shipping = 0;
   shippingType = true;
 
+  //Local Variable defined 
+  formattedaddress = " ";
+  options = {
+    componentRestrictions: {
+      country: ["ES"]
+    }
+  } 
+  public AddressChange(address: any) {
+    //setting address from API to local variable 
+    this.formattedaddress = address.formatted_address
+    console.log(address)
+  } 
   closeResult = '';
   constructor(
     private _productsService: ProductsService,

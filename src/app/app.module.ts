@@ -22,6 +22,7 @@ import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 import { MenuComponent } from './components/menu/menu.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { TablesComponent } from './components/tables/tables.component';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete"; 
 
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,6 +48,7 @@ export function httpTranslateLoader(http: HttpClient) {
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    GooglePlaceModule,
     HttpClientModule,
     HttpClientModule,
     NgxStripeModule.forRoot('pk_test_51H9oTAATbeiMfoWZHrm3q0QCUtANPgu7FJ2x1CLcb5zCALiQ3yGdCq23LjRC4D6KGtzyDeeIUKu8hruQneZBBfHs00fbbXUCym'),

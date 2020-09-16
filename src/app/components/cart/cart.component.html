@@ -75,8 +75,6 @@
         </div>
       </div>
 
-
-
       <div *ngIf="!ifLogin()">
         <div class="col mb-2">
           <div class="row">
@@ -117,8 +115,9 @@
           </div>
           <div class="form-group" *ngIf="displayForm">
             <label for="direccion">Dirección</label>
-            <input [(ngModel)]="user[0].calle" type="text" class="form-control" id="direccion"
-              aria-describedby="direccionHelp" [(placeholder)]="user[0].calle">
+              <input ngx-google-places-autocomplete [options]='options' [(ngModel)]="user[0].calle"  class="form-control" id="direccion"
+              aria-describedby="direccionHelp" [(placeholder)]="user[0].calle" (onAddressChange)="AddressChange($event)" />
+              {{ formattedaddress }}
             <small id="direccionHelp" class="form-text text-muted">Si quiere otra dirección cambiela aqui</small>
             <br>
             <label for="cp">CP</label>

@@ -23,8 +23,24 @@
   <!-- <script src="https://checkout.stripe.com/checkout.js"></script> -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE0Gv46tELco1QC9m1mDo_eJwy2ekC-FE&libraries=places&language=en"></script>
 </head>
-<body class="mat-typography">
+<body class="mat-typography" onload="getLocation()">
+
+  <script language="javascript" type="text/javascript">
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(position => {
+          console.log(position.coords.latitude);
+          console.log(position.coords.longitude);
+
+        });
+
+
+      }
+      //navigator.geolocation.getCurrentPosition(showMap);
+    }
+  </script>
   <app-root></app-root>
 </body>
 </html>

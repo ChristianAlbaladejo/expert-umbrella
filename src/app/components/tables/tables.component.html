@@ -1,9 +1,16 @@
 <div *ngIf="tables">
     <h1 class="text-justify">Mesas libres:</h1>
-    <div *ngIf="tables.total > tables.inUse">
+    <div *ngIf="tables >= 1">
         <div class="num">
-            <h2 class="text-justify upper" >{{ (tables.total - tables.inUse)-2}}</h2>
+            <h2 class="text-justify upper" >{{ (tables)-2}}</h2>
         </div>
         <h3>LLama y reserva ya &nbsp; <a href="tel:600123456"> <i class="fas fa-phone"></i></a></h3>
     </div>
+    <div *ngIf="tables <= 0">
+        <div class="num">
+            <h4 class="text-justify upper">En estos momentos no tenemos mesas disponibles </h4>
+        </div>
+        <h3>LLama y reserva ya &nbsp; <a href="tel:600123456"> <i class="fas fa-phone"></i></a></h3>
+    </div>
+
 </div>
