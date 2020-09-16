@@ -284,6 +284,9 @@ export class CartComponent implements OnInit, OnDestroy {
         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
           $("#success-alert").slideUp(500);
         });
+        localStorage.removeItem('cart');
+        localStorage.setItem('cart', JSON.stringify({}));
+        this._router.navigate(['/products']);
         this.loading = false;
       }, error => {
         this.open()
