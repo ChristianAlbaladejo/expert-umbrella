@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../app/services/products.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as $ from "jquery";
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
@@ -78,7 +80,7 @@ export class FavoritesComponent implements OnInit {
       'Authorization': localStorage.getItem("token")
     });
     this.http
-      .post('https://panesandco.herokuapp.com/addFavorite/',
+      .post(environment.APIURL+'/addFavorite/',
         body, { headers: headers })
       .subscribe(data => {
       }, error => {

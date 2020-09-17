@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../app/models/user';
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class UserService {
     public url: string;
@@ -9,7 +11,7 @@ export class UserService {
     public stats;
 
     constructor(public _http: HttpClient) {
-         this.url = "https://panesandco.herokuapp.com"   
+         this.url = environment.APIURL 
          /* this.url = "http://localhost:3000";   */
     }
 

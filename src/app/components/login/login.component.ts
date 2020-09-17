@@ -4,6 +4,7 @@ import { User } from '../../../app/models/user';
 import { UserService } from '../../../app/services/user.service';
 import * as $ from "jquery";
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

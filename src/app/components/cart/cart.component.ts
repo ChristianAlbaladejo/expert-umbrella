@@ -7,9 +7,7 @@ import { User } from '../../../app/models/user';
 import * as $ from "jquery";
 import * as bootstrap from 'bootstrap';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
-
-import { FormsModule } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -41,12 +39,12 @@ export class CartComponent implements OnInit, OnDestroy {
     componentRestrictions: {
       country: ["ES"]
     }
-  } 
+  }
   public AddressChange(address: any) {
     //setting address from API to local variable 
     this.formattedaddress = address.formatted_address
     console.log(address)
-  } 
+  }
   closeResult = '';
   constructor(
     private _productsService: ProductsService,
@@ -182,7 +180,7 @@ export class CartComponent implements OnInit, OnDestroy {
   async testRequest() {
     let headers = new HttpHeaders({
       'Content-Type': 'application/xml; charset=utf-8',
-      'Api-Token': 'Blade001$',
+      'Api-Token': environment.APITOKEN,
       'Accept': 'application/xml'
     });
     let lines = '';
@@ -225,7 +223,7 @@ export class CartComponent implements OnInit, OnDestroy {
       '</Export>'
     console.log(body);
     this.http
-      .post('http://192.168.1.109:8984/api/import/',
+      .post(environment.TPVIP+'/api/import/',
         body, { headers: headers })
       .subscribe(data => {
         let orderlines = JSON.stringify(this.products)
@@ -251,7 +249,7 @@ export class CartComponent implements OnInit, OnDestroy {
           'Authorization': localStorage.getItem("token")
         });
         this.http
-          .post('https://panesandco.herokuapp.com/order',
+          .post(environment.APIURL+'/order',
             body, { headers: headers })
           .subscribe(data => {
           }, error => {
@@ -259,7 +257,7 @@ export class CartComponent implements OnInit, OnDestroy {
         //print ticket
         headers = new HttpHeaders({
           'Content-Type': 'application/json',
-          'api-token': 'Blade001$'
+          'api-token': environment.APITOKEN
         });
         var currentdate = new Date();
         var datetime = currentdate.getDate() + "/"
@@ -269,12 +267,12 @@ export class CartComponent implements OnInit, OnDestroy {
           + currentdate.getMinutes() + ":"
           + currentdate.getSeconds();
         var text = {
-          "PrinterName": "IMPRESORA",
+          "PrinterName": environment.PRINTERNAME,
           "Format": "plain",
           "Data": '\n\nSE HA GENERADO UN NUEVO PEDIDO AW-' + (parseInt(this.lastOrderId) + 1) + '\n FECHA DE PEDIDO:' + datetime + ' \n\nCLIENTE:    ' + this.user[0].name.toUpperCase() + ' ' + this.user[0].lastname.toUpperCase() + '\n CALLE:     ' + this.user[0].calle.toUpperCase() + '\n CIUDAD: ' + '   Murcia' + '\n POBLACION: ' + this.user[0].poblacion.toUpperCase() + '\n CP :       ' + this.user[0].CP + '\n CONTACTO : ' + this.user[0].telefono + ' ' + this.user[0].email + '\n  TOTAL:    ' + Math.round((this.total + Number.EPSILON) * 100) / 100 + 'euros\n RECOGIDA/ENTREGA: ' + this.fechaRecogida.replace(/T/g, ' ') + '\n\n Forma de Pago: ' + this.chargesType.toUpperCase() + '\n\n\n\n\n\n\n\n\n\n\n'
         };
         this.http
-          .post('http://192.168.1.109:8984/api/print/',
+          .post(environment.TPVIP+'/api/print/',
             text, { headers: headers })
           .subscribe(data => {
             localStorage.removeItem('cart');
@@ -325,7 +323,7 @@ export class CartComponent implements OnInit, OnDestroy {
         this.loading = false;
       });
   }
-  
+
   async getFamilyName() {
     this._productsService.getFamilies().subscribe(
       (response) => {
@@ -412,7 +410,7 @@ export class CartComponent implements OnInit, OnDestroy {
       } else {
         if (this.chargesType == 'tarjeta') {
           var handler = (<any>window).StripeCheckout.configure({
-            key: 'pk_live_51HEUwyHEn9GtZEa1Lb2ayp85wwRo7xWnxVqiuDrm90tuRVEbnPQmhXIvPqntwzuiHxff6b6l9IGkccmYV3DHa9G600qsOsQplu',
+            key: environment.STRIPEPK,
             locale: 'auto',
             token: (token: any) => {
               // You can access the token ID with `token.id`.
@@ -425,7 +423,7 @@ export class CartComponent implements OnInit, OnDestroy {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
               });
-              this.http.post('https://panesandco.herokuapp.com/charge',
+              this.http.post(environment.APIURL+'/charge',
                 body, { headers: headers })
                 .subscribe(data => {
                   this.buy()
@@ -456,4 +454,18 @@ export class CartComponent implements OnInit, OnDestroy {
       this.chargesType = 'El cliente quiere solicitar un credito'
     }
   }
+  getDistanciaMetros(lat1, lon1, lat2, lon2) {
+    const rad = function (x) { return x * Math.PI / 180; }
+    var R = 6378.137; //Radio de la tierra en km 
+    var dLat = rad(lat2 - lat1);
+    var dLong = rad(lon2 - lon1);
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(rad(lat1)) *
+      Math.cos(rad(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    //aquí obtienes la distancia en metros por la conversion 1Km =1000m
+    var d = R * c * 1000;
+    return d;
+  }
 }
+

@@ -6,6 +6,8 @@ import { User } from '../../../app/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
+import { environment } from '../../../environments/environment';
+
 import * as $ from "jquery";
 @Component({
   selector: 'app-simple-product',
@@ -146,7 +148,7 @@ export class SimpleProductComponent implements OnInit, OnDestroy {
       'Authorization': localStorage.getItem("token")
     });
     this.http
-      .post('https://panesandco.herokuapp.com/addFavorite/',
+      .post(environment.APIURL+'/addFavorite/',
         body, { headers: headers })
       .subscribe(data => {
       }, error => {

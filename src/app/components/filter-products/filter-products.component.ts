@@ -4,6 +4,7 @@ import { ProductsService } from '../../../app/services/products.service';
 import { Product } from '../../../app/models/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as $ from "jquery";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-filter-products',
@@ -152,7 +153,7 @@ export class FilterProductsComponent implements OnInit {
       'Authorization': localStorage.getItem("token")
     });
     this.http
-      .post('https://panesandco.herokuapp.com/addFavorite/',
+      .post(environment.APIURL+'/addFavorite/',
         body, { headers: headers })
       .subscribe(data => {
       }, error => {
