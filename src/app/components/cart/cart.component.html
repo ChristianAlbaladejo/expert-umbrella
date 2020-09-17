@@ -96,13 +96,13 @@
               </div>
             </div>
             <div class="col">
-               <div class="custom-control custom-radio">
+              <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" id="tarjeta" name="formadepago" checked
                   (change)="formaDePago('tarjeta')">
                 <label class="custom-control-label" for="tarjeta">Pagar con tarjeta</label>
-              </div> 
+              </div>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="efectivo"  name="formadepago"
+                <input type="radio" class="custom-control-input" id="efectivo" name="formadepago"
                   (change)="formaDePago('efectivo')">
                 <label class="custom-control-label" for="efectivo">Efectivo</label>
               </div>
@@ -115,9 +115,11 @@
           </div>
           <div class="form-group" *ngIf="displayForm">
             <label for="direccion">Dirección</label>
-              <input ngx-google-places-autocomplete [options]='options' [(ngModel)]="user[0].calle"  class="form-control" id="direccion"
-              aria-describedby="direccionHelp" [(placeholder)]="user[0].calle" (onAddressChange)="AddressChange($event)" />
-              {{ formattedaddress }}
+            <input ngx-google-places-autocomplete [options]='options' [(ngModel)]="user[0].calle" class="form-control"
+              id="direccion" aria-describedby="direccionHelp" [(placeholder)]="user[0].calle"
+              (input)="AddressChange('input')" (onAddressChange)="AddressChange($event)" />
+            <p class="text-success" *ngIf="formattedaddress=='Podemos repartir'">{{ formattedaddress }}</p>
+            <p class="text-danger" *ngIf="formattedaddress!='Podemos repartir'">{{ formattedaddress }}</p>
             <small id="direccionHelp" class="form-text text-muted">Si quiere otra dirección cambiela aqui</small>
             <br>
             <label for="cp">CP</label>
@@ -130,6 +132,7 @@
             <label for="telefono">Telefono</label>
             <input [(ngModel)]="user[0].telefono" type="text" class="form-control" id="telefono"
               [(placeholder)]="user[0].telefono">
+            <p class="text-danger" *ngIf="user[0].telefono.length <= 8">Por favor introduzca un telefono valido</p>
           </div>
           <br>
           <label for="exampleFormControlTextarea1">Notas:</label>
@@ -145,11 +148,14 @@
             <button class="btn btn-lg  btn-danger text-uppercase col-12 col-md-4 botones"
               [routerLink]="['/product']">CONTINUAR COMPRANDO</button>
             <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones"
-              *ngIf="!ifLogin() && !loading" [disabled]="!fechaRecogida" (click)="pay(total)" data-target="#exampleModal">
+              *ngIf="!ifLogin() && !loading"
+              [disabled]="!fechaRecogida || user[0].poblacion == '' || user[0].CP == '' || user[0].direccion == '' || user[0].telefono.length <= 8 || user[0].calle == '' || validateStreet == false  "
+              (click)="pay(total)" data-target="#exampleModal">
               Pedir ahora
             </button>
-            
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -166,14 +172,14 @@
                 </div>
               </div>
             </div>
-            <ng-template #content  let-modal>
+            <ng-template #content let-modal>
               <div class="modal-header">
                 <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                    <h1>Error en estos momentos no estamos disponibles</h1>
+                <h1>Error en estos momentos no estamos disponibles</h1>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
@@ -188,6 +194,20 @@
               </div>
               <div class="modal-body">
                 <h1>Por favor, la cantidad minima para pedir con tarjeta es de 15€</h1>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+              </div>
+            </ng-template>
+
+            <ng-template #usertarget let-modal>
+              <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h1>Por favor, rellene los datos de entrega</h1>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>

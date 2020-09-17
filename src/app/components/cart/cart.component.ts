@@ -32,7 +32,7 @@ export class CartComponent implements OnInit, OnDestroy {
   chargesType = 'tarjeta';
   shipping = 0;
   shippingType = true;
-
+  validateStreet = false
   //Local Variable defined 
   formattedaddress = " ";
   options = {
@@ -41,9 +41,23 @@ export class CartComponent implements OnInit, OnDestroy {
     }
   }
   public AddressChange(address: any) {
-    //setting address from API to local variable 
-    this.formattedaddress = address.formatted_address
-    console.log(address)
+    this.validateStreet = false
+    console.log(this.validateStreet, address);
+    if (address != 'input') {
+      //setting address from API to local variable 
+      this.formattedaddress = address.formatted_address
+      if (this.getDistanciaMetros(address.geometry.location.lat(), address.geometry.location.lng(), 37.804516, -0.831246)) {
+        this.formattedaddress = "Podemos repartir"
+        this.validateStreet = true
+        this.user[0].calle = address.formatted_address
+      } else {
+        this.formattedaddress = "Lo sentimos no podemos repartir a esa dirección"
+        $("#direccion").val('');
+        this.user[0].calle = ""
+        this.validateStreet = false
+      }
+    }
+
   }
   closeResult = '';
   constructor(
@@ -55,6 +69,13 @@ export class CartComponent implements OnInit, OnDestroy {
     private _router: Router) { }
 
   async ngOnInit(): Promise<void> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8"',
+
+    });
+    $.getJSON('', function (data) {
+      console.log(data)
+    });
     $(document).ready(function () {
       $("#success-alert").hide();
       $("#danger-alert").hide();
@@ -223,7 +244,7 @@ export class CartComponent implements OnInit, OnDestroy {
       '</Export>'
     console.log(body);
     this.http
-      .post(environment.TPVIP+'/api/import/',
+      .post(environment.TPVIP + '/api/import/',
         body, { headers: headers })
       .subscribe(data => {
         let orderlines = JSON.stringify(this.products)
@@ -249,7 +270,7 @@ export class CartComponent implements OnInit, OnDestroy {
           'Authorization': localStorage.getItem("token")
         });
         this.http
-          .post(environment.APIURL+'/order',
+          .post(environment.APIURL + '/order',
             body, { headers: headers })
           .subscribe(data => {
           }, error => {
@@ -272,7 +293,7 @@ export class CartComponent implements OnInit, OnDestroy {
           "Data": '\n\nSE HA GENERADO UN NUEVO PEDIDO AW-' + (parseInt(this.lastOrderId) + 1) + '\n FECHA DE PEDIDO:' + datetime + ' \n\nCLIENTE:    ' + this.user[0].name.toUpperCase() + ' ' + this.user[0].lastname.toUpperCase() + '\n CALLE:     ' + this.user[0].calle.toUpperCase() + '\n CIUDAD: ' + '   Murcia' + '\n POBLACION: ' + this.user[0].poblacion.toUpperCase() + '\n CP :       ' + this.user[0].CP + '\n CONTACTO : ' + this.user[0].telefono + ' ' + this.user[0].email + '\n  TOTAL:    ' + Math.round((this.total + Number.EPSILON) * 100) / 100 + 'euros\n RECOGIDA/ENTREGA: ' + this.fechaRecogida.replace(/T/g, ' ') + '\n\n Forma de Pago: ' + this.chargesType.toUpperCase() + '\n\n\n\n\n\n\n\n\n\n\n'
         };
         this.http
-          .post(environment.TPVIP+'/api/print/',
+          .post(environment.TPVIP + '/api/print/',
             text, { headers: headers })
           .subscribe(data => {
             localStorage.removeItem('cart');
@@ -423,7 +444,7 @@ export class CartComponent implements OnInit, OnDestroy {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
               });
-              this.http.post(environment.APIURL+'/charge',
+              this.http.post(environment.APIURL + '/charge',
                 body, { headers: headers })
                 .subscribe(data => {
                   this.buy()
@@ -463,9 +484,13 @@ export class CartComponent implements OnInit, OnDestroy {
       Math.cos(rad(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-    //aquí obtienes la distancia en metros por la conversion 1Km =1000m
-    var d = R * c * 1000;
-    return d;
+    var d = R * c;
+    console.log(d)
+    if (d <= 8) {
+      return true
+    } else {
+      return false
+    }
   }
 }
 
