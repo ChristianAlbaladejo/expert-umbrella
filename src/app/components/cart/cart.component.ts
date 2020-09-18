@@ -32,7 +32,7 @@ export class CartComponent implements OnInit, OnDestroy {
   chargesType = 'tarjeta';
   shipping = 0;
   shippingType = true;
-  validateStreet = false
+  validateStreet = true
   //Local Variable defined 
   formattedaddress = " ";
   options = {
@@ -374,6 +374,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   onChangeRadio(flag) {
     if (flag == 'delivery') {
+      this.validateStreet = false
       this.shippingType = false;
       this.displayForm = true;
       this.creditCard = true
@@ -390,6 +391,7 @@ export class CartComponent implements OnInit, OnDestroy {
       this.displayForm = false;
       this.user[0].calle = "El pedido se tomara en mesa X"
       this.shippingType = true;
+      this.validateStreet = true
 
     } else if (flag == 'rtienda') {
       this.creditCard = true
@@ -397,6 +399,7 @@ export class CartComponent implements OnInit, OnDestroy {
       this.user[0].calle = "El pedido se recogera en tienda";
       this.shipping = 0;
       this.shippingType = true;
+      this.validateStreet = true
     }
   }
 

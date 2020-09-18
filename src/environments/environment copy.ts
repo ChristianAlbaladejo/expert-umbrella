@@ -9,7 +9,9 @@ export const environment = {
   APIURL: "",
   STRIPEPK: "",
   TABLESURL: "",
-  PRINTERNAME: ""
+  PRINTERNAME: "",
+  LAT_STORE: "",
+  LNG_STORE: ""
 };
 
 /*

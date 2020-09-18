@@ -115,6 +115,12 @@ input[type="reset"]:active {
   transform: scale(0.95);
 }
 
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled {
+  background-color: #a6cee2;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {

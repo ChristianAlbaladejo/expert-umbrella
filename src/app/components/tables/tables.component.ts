@@ -12,6 +12,8 @@ export class TablesComponent implements OnInit {
   constructor(private http: HttpClient,) { }
 
   ngOnInit(): void {
+    console.log(this.tables, 'sdfs');
+    
     this.load();
   }
 
@@ -20,12 +22,11 @@ export class TablesComponent implements OnInit {
       'Content-Type': 'application/json; charset=UTF-8"',
       'Access-Control-Allow-Origin': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
-      'Connection':'keep-alive',
+      'Connection': 'keep-alive',
       'Cache-Control': 'no-cache',
       'Pragma': 'no-cache'
-        });
+    });
     this.http.get('http://192.168.1.109:5000/tables', { headers: headers }).subscribe(response => {
-      console.log(response)
       this.tables = response;
     }, error => {
       console.log(error);

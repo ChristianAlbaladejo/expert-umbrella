@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
         this.user.calle = address.formatted_address
       } else {
         this.formattedaddress = "Lo sentimos no podemos repartir a esa dirección"
-        $("#direccion").val('');
+        $("#calle").val('');
         this.user.calle = ""
         this.validateStreet = false
       }

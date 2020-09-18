@@ -10,5 +10,10 @@
         <p class="text-justify">En estos momentos no tenemos mesas disponibles </p>
         <h3>LLama y reserva ya &nbsp; <a href="tel:600123456"> <i class="fas fa-phone"></i></a></h3>
     </div>
-
-</div>
+    </div>
+    <div *ngIf="tables === undefined">
+        <div class="num">
+            <h4 class="text-justify">En estos momentos no tenemos mesas disponibles</h4>
+        </div>
+        <h3>LLama y reserva ya &nbsp; <a href="tel:600123456"> <i class="fas fa-phone"></i></a></h3>
+    </div>
