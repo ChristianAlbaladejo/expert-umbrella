@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import * as $ from "jquery";
 import { TranslateService } from '@ngx-translate/core';
-
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-products',
@@ -184,7 +184,7 @@ export class ProductsComponent implements OnInit {
       'Authorization': localStorage.getItem("token")
     });
     this.http
-      .post('https://panesandco.herokuapp.com/addFavorite/',
+      .post(environment.APIURL+'/addFavorite/',
         body, { headers: headers })
       .subscribe(data => {
       }, error => {
