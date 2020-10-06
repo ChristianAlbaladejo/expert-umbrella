@@ -149,7 +149,7 @@
               [routerLink]="['/product']">CONTINUAR COMPRANDO</button>
             <button class="btn btn-lg  btn-success text-uppercase col-12 col-md-4 botones"
               *ngIf="!ifLogin() && !loading"
-              [disabled]="!fechaRecogida || user[0].poblacion == '' || user[0].CP == '' || user[0].direccion == '' || user[0].telefono.length <= 8 || user[0].calle == '' || validateStreet == false  "
+              [disabled]="!fechaRecogida || user[0].poblacion == '' || user[0].CP == '' || user[0].direccion == '' || user[0].calle == '' || validateStreet == false  "
               (click)="pay(total)" data-target="#exampleModal">
               Pedir ahora
             </button>

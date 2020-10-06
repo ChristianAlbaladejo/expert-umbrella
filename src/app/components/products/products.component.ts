@@ -105,6 +105,7 @@ export class ProductsComponent implements OnInit {
     this._productsService.filter(this.search).subscribe(
       (response) => {
         this.products = response;
+        console.log(this.products);
         this.products.forEach(element => {
           element['name'] = decodeURIComponent(escape(element['name']));
         });
@@ -112,17 +113,16 @@ export class ProductsComponent implements OnInit {
       (error) => {
       }
     );
-
-    this._productsService.getFav(this.user[0].id).subscribe(
-      (response) => {
-        this.productLike = response;
-        this.productLike.forEach(element => {
-          element['name'] = decodeURIComponent(escape(element['name']));
-        });
-        console.log(this.productLike)
+    if (this.user) {
+      this._productsService.getFav(this.user[0].id).subscribe(
+        (response) => {
+          this.productLike = response;
+          this.productLike.forEach(element => {
+            element['name'] = decodeURIComponent(escape(element['name']));
+          });
+        }
+      ), error => {
       }
-    ), error => {
-      console.log(error);
     }
   }
 

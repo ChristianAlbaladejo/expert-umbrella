@@ -64,9 +64,11 @@
                         
                     </h1> 
                     </div>-->
-                <div class="row" *ngIf="productLike">
-                    <i class="far fa-heart fav" *ngIf="!checkFav(p)" (click)="addFav(p)"></i>
-                    <i class="fas fa-heart fav-colored" *ngIf="checkFav(p)" (click)="deleteFav(p)"></i>
+                <div class="row">
+                    <div *ngIf="productLike">
+                        <i class="far fa-heart fav" *ngIf="!checkFav(p)" (click)="addFav(p)"></i>
+                        <i class="fas fa-heart fav-colored" *ngIf="checkFav(p)" (click)="deleteFav(p)"></i>
+                    </div>
 
                     <img class="img-product"
                         style="background-image: url(../../../assets/{{p.PLU}}.jpg), url(../../../assets/mug.jpg);">
