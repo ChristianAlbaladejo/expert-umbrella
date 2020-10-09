@@ -65,7 +65,7 @@
 <div class="row">
   <div class="col" id="google_translate_element"></div>
   <!-- <a class="fas fa-utensils col text-right menu" href="../assets/carta.pdf"  id="menu"></a> -->
-  <div class="col" style="text-align: right; zoom: 2"  ><i [routerLink]="['/favorites']" *ngIf="location != '/favorites'" class="fas fa-heart"></i><i class="fas fa-heart fav-colored" *ngIf="location == '/favorites'" [routerLink]="['/']"></i></div>
+  <div  *ngIf="identity" class="col" style="text-align: right; zoom: 2"  ><i [routerLink]="['/favorites']" *ngIf="location != '/favorites'" class="fas fa-heart"></i><i class="fas fa-heart fav-colored" *ngIf="location == '/favorites'" [routerLink]="['/']"></i></div>
 </div>
 
 <!-- <footer (click)="goLogin()">
