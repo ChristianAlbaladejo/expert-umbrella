@@ -32,7 +32,7 @@
     "@types/jquery": "^3.5.1",
     "bootstrap": "^4.5.0",
     "bootstrap-input-spinner": "^1.13.19",
-    "exec-php": "0.0.5",
+    "exec-php": "0.0.6",
     "file-exists": "^5.0.1",
     "file-system": "^2.2.2",
     "jquery": "^3.5.1",
